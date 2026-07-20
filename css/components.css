@@ -630,7 +630,6 @@ a.product-card__hover-button {
 .cart-item__thumb {
   width: 72px;
   height: 72px;
-  border: var(--border) solid var(--color-line);
   background: #e6e6e6;
   display: grid;
   place-items: center;

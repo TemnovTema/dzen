@@ -29,7 +29,6 @@
   isolation: isolate;
   height: clamp(34rem, calc(100dvh - 8rem), 50rem);
   overflow: hidden;
-  border: var(--border) solid var(--color-line);
   background: var(--color-surface);
 }
 
@@ -259,7 +258,6 @@
   isolation: isolate;
   min-height: 0;
   overflow: hidden;
-  border: var(--border) solid var(--color-line);
   color: var(--color-text);
   text-decoration: none;
 }
@@ -332,8 +330,6 @@
   min-height: 34rem;
   margin: 0;
   overflow: hidden;
-  border: var(--border) solid var(--color-line);
-  border-right: 0;
 }
 
 .home-story__media img {
@@ -539,8 +535,6 @@
   .home-story__media {
     min-height: 0;
     aspect-ratio: 16 / 9;
-    border-right: var(--border) solid var(--color-line);
-    border-bottom: 0;
   }
 
   .home-story__copy {
@@ -820,7 +814,6 @@ body.page-cart .cart-layout {
 
 .about-hero__media {
   margin: 0;
-  border: var(--border) solid var(--color-line);
   background: var(--color-surface);
   overflow: hidden;
 }
@@ -846,7 +839,6 @@ body.page-cart .cart-layout {
   display: flex;
   align-items: flex-end;
   padding: clamp(var(--gap-lg), 7vw, 6.5rem);
-  border: var(--border) solid var(--color-line);
   background: var(--color-surface) url("../assets/images/about-ink-texture.jpg") center / cover no-repeat;
   overflow: hidden;
 }
@@ -918,7 +910,6 @@ body.page-cart .cart-layout {
 .about-craft__image {
   margin: 0;
   aspect-ratio: 1;
-  border: var(--border) solid var(--color-line);
   background: var(--color-surface);
   overflow: hidden;
 }
