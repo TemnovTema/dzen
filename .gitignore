@@ -1,0 +1,7 @@
+.DS_Store
+.vercel/
+.agents/
+.claude/
+agent/
+skills-lock.json
+*.log

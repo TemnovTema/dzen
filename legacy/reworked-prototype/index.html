@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дзен — онлайн-магазин ритуальной формы</title>
+  <meta
+    name="description"
+    content="Онлайн-магазин бренда Дзен: одежда, инструменты, издания и звуковые объекты для практики, формы и спокойной дисциплины."
+  >
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page page-home">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html" aria-label="Дзен, перейти на главную">
+        <img src="assets/images/logo.png" alt="" width="58" height="58">
+        <span class="brand-mark__text">
+          <span class="brand-mark__title">Дзен</span>
+          <span class="brand-mark__subtitle">ritual store / static edition</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#essence">Философия</a>
+        <a href="#house">Дом Дзен</a>
+      </nav>
+
+      <a class="cart-link" href="cart.html">
+        <span>Корзина</span>
+        <span class="cart-link__count" data-cart-count>0</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="hero__grid">
+          <article class="panel hero__copy">
+            <p class="eyebrow">Онлайн-магазин школы и бренда</p>
+            <h1>Широкая витрина предметов для тихой дисциплины и строгой формы.</h1>
+            <p class="lead">
+              “Дзен” теперь собран как полноценный статический магазин: с каталогом,
+              отдельными страницами товаров и корзиной. Визуальный характер остался
+              прежним: темнота, модуль, рамка, ритуал.
+            </p>
+            <div class="button-row">
+              <a class="button button--solid" href="#catalog">Открыть каталог</a>
+              <a class="button button--ghost" href="product.html?id=kimono-dzen">Посмотреть флагман</a>
+            </div>
+          </article>
+
+          <div class="panel hero__feature" data-featured-product></div>
+
+          <aside class="panel hero__elements" aria-label="Стихии бренда">
+            <p class="eyebrow">Стихии</p>
+            <div class="element-grid">
+              <article class="element-card element-card--water">
+                <img src="assets/images/water.real.png" alt="Текстура воды">
+                <div>
+                  <h2>Вода</h2>
+                  <p>Текучесть кроя и плавный ритм вещей, которые живут в практике.</p>
+                </div>
+              </article>
+              <article class="element-card element-card--fire">
+                <img src="assets/images/fire.real.png" alt="Текстура огня">
+                <div>
+                  <h2>Огонь</h2>
+                  <p>Импульс, тираж, редкость. Каждый дроп рассчитан, а не случаен.</p>
+                </div>
+              </article>
+              <article class="element-card element-card--stone">
+                <img src="assets/images/stone.real.png" alt="Текстура камня">
+                <div>
+                  <h2>Камень</h2>
+                  <p>Вес предмета и материальность инструмента, который держится годами.</p>
+                </div>
+              </article>
+              <article class="element-card element-card--air">
+                <img src="assets/images/air.real.png" alt="Текстура воздуха">
+                <div>
+                  <h2>Воздух</h2>
+                  <p>Пауза, звук и пространство вокруг предмета, а не только его форма.</p>
+                </div>
+              </article>
+            </div>
+          </aside>
+
+          <div class="panel hero__note">
+            <p class="eyebrow">Система</p>
+            <div class="metric-row">
+              <div class="metric-card">
+                <span class="metric-card__value">04</span>
+                <span class="metric-card__label">товарных направления</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-card__value">01</span>
+                <span class="metric-card__label">единая страница товара</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-card__value">100%</span>
+                <span class="metric-card__label">чистый HTML / CSS / JS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="catalog">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Каталог</p>
+            <h2 class="section-title">Предметы дома “Дзен”</h2>
+          </div>
+          <p class="section-copy">
+            Никакой узкой центральной полосы: каталог раскрыт во всю композицию
+            экрана, чтобы карточки товаров работали как полноценные модульные объекты.
+          </p>
+        </div>
+
+        <div class="filter-bar" data-filter-bar></div>
+        <div class="catalog-grid" data-product-grid></div>
+      </section>
+
+      <section class="section" id="essence">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Философия</p>
+            <h2 class="section-title">Графичный бренд, собранный как пространство</h2>
+          </div>
+          <p class="section-copy">
+            Здесь магазин не отделяется от образа школы. Предметы, тексты и
+            визуальные материалы работают как одна система: форма, знание,
+            инструмент и атмосфера.
+          </p>
+        </div>
+
+        <div class="editorial-grid">
+          <article class="panel editorial-card editorial-card--media">
+            <div class="editorial-stack">
+              <div class="media-frame media-frame--large">
+                <img src="assets/images/katana.png" alt="Катана как символ дисциплины">
+              </div>
+              <div class="media-frame media-frame--offset">
+                <img src="assets/images/map.png" alt="Карта пространства Дзен">
+              </div>
+            </div>
+            <div class="editorial-card__text">
+              <p class="eyebrow">Инструмент</p>
+              <h3>Строгая линия, реальный вес, ничего случайного.</h3>
+              <p>
+                Каждая вещь в магазине воспринимается не как мерч по инерции, а как
+                продолжение практики: одежда задает форму, предмет дисциплинирует
+                жест, книга удерживает внимание, звук собирает воздух вокруг.
+              </p>
+            </div>
+          </article>
+
+          <article class="panel editorial-card editorial-card--textured">
+            <div class="media-frame media-frame--portrait">
+              <img src="assets/images/book.png" alt="Издание бренда Дзен">
+            </div>
+            <div class="editorial-card__text">
+              <p class="eyebrow">Издание</p>
+              <h3>Печатные объекты и медленные форматы остаются частью бренда.</h3>
+              <ul class="note-list">
+                <li>Тексты и предметы не спорят друг с другом, а поддерживают один ритм.</li>
+                <li>Контентовые блоки собраны шире и спокойнее, чем в старой версии.</li>
+                <li>Белые рамки и темные поля оставлены как главный жест системы.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="panel editorial-card editorial-card--quote">
+            <p class="eyebrow">Манифест</p>
+            <blockquote>
+              “Вещь должна быть не шумной, а точной. Не декоративной, а собранной.
+              Не модной на неделю, а пригодной для повторения ритуала.”
+            </blockquote>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="house">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Дом Дзен</p>
+            <h2 class="section-title">Очные события и визуальные афиши остаются частью магазина</h2>
+          </div>
+          <p class="section-copy">
+            Старые постеры я сохранил как редакционный слой бренда. Они поддерживают
+            ощущение живого пространства, а не безличной витрины.
+          </p>
+        </div>
+
+        <div class="calendar-grid">
+          <article class="calendar-card panel">
+            <div class="media-frame media-frame--poster">
+              <img src="assets/images/poster-1.png" alt="Афиша дня открытых дверей">
+            </div>
+            <div class="calendar-card__text">
+              <p class="eyebrow">Открытая практика</p>
+              <h3>День открытых дверей</h3>
+              <p>Разговор с преподавателями, первые упражнения и вход в атмосферу школы.</p>
+            </div>
+          </article>
+
+          <article class="calendar-card panel">
+            <div class="media-frame media-frame--poster">
+              <img src="assets/images/poster-2.png" alt="Афиша вечера самурайских историй">
+            </div>
+            <div class="calendar-card__text">
+              <p class="eyebrow">Вечерний формат</p>
+              <h3>Самурайские истории</h3>
+              <p>Лекции, рассказы и демонстрации, которые поддерживают культурный слой бренда.</p>
+            </div>
+          </article>
+
+          <article class="calendar-card panel">
+            <div class="media-frame media-frame--poster">
+              <img src="assets/images/poster-3.png" alt="Афиша языкового интенсива">
+            </div>
+            <div class="calendar-card__text">
+              <p class="eyebrow">Речь и ритм</p>
+              <h3>Языковой интенсив</h3>
+              <p>Практика языка как продолжение внимания к жесту, слову и паузе.</p>
+            </div>
+          </article>
+
+          <article class="calendar-card panel">
+            <div class="media-frame media-frame--poster">
+              <img src="assets/images/poster-4.png" alt="Афиша философского интенсива">
+            </div>
+            <div class="calendar-card__text">
+              <p class="eyebrow">Медленный блок</p>
+              <h3>Интенсив по философии</h3>
+              <p>Тексты, обсуждения и практики, которые связывают магазин с самим пространством.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p class="site-footer__title">Дзен</p>
+        <p class="site-footer__copy">
+          Статический онлайн-магазин с каталогом, карточками товаров и локальной корзиной.
+        </p>
+      </div>
+      <div class="site-footer__meta">
+        <p>Чистый HTML / CSS / JS</p>
+        <p>Корзина хранится в браузере пользователя</p>
+        <p><span data-current-year></span></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

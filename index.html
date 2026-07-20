@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дзен — каталог</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-home">
+  <header class="site-header page-shell">
+    <a class="brand" href="home.html">Дзен</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="index.html" aria-current="page">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="cart.html">Корзина <span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="catalog-layout page-shell" aria-label="Каталог">
+      <div class="catalog-main">
+        <div class="filter-panel" id="catalog-filters-panel" hidden>
+          <div class="filter-grid">
+            <div class="filter-group">
+              <h3 class="filter-title">Категория</h3>
+              <div class="filter-options">
+                <button type="button" class="filter-option is-active" data-filter-category="all">все</button>
+                <button type="button" class="filter-option" data-filter-category="Одежда">одежда</button>
+                <button type="button" class="filter-option" data-filter-category="Аксессуары">аксессуары</button>
+                <button type="button" class="filter-option" data-filter-category="Печатное">печатное</button>
+                <button type="button" class="filter-option" data-filter-category="Другое">другое</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-title">Размер</h3>
+              <div class="filter-options">
+                <button type="button" class="filter-option" data-filter-size="S">s</button>
+                <button type="button" class="filter-option" data-filter-size="M">m</button>
+                <button type="button" class="filter-option" data-filter-size="L">l</button>
+                <button type="button" class="filter-option" data-filter-size="XL">xl</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-title">Цвет</h3>
+              <div class="filter-options">
+                <button type="button" class="filter-option" data-filter-color="Чёрный">чёрный</button>
+                <button type="button" class="filter-option" data-filter-color="Белый">белый</button>
+                <button type="button" class="filter-option" data-filter-color="Синий">синий</button>
+                <button type="button" class="filter-option" data-filter-color="Красный">красный</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h3 class="filter-title">Сортировка</h3>
+              <div class="filter-options">
+                <button type="button" class="filter-option is-active" data-sort="default">по умолчанию</button>
+                <button type="button" class="filter-option" data-sort="price-asc">цена по возрастанию</button>
+                <button type="button" class="filter-option" data-sort="price-desc">цена по убыванию</button>
+                <button type="button" class="filter-option" data-sort="name-asc">по названию</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="catalog-root" class="catalog-sections"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner page-shell">
+      <div>
+        <p class="brand" style="margin-bottom:var(--gap-sm)">Дзен</p>
+        <nav class="site-footer__nav" aria-label="Нижняя навигация">
+          <a href="index.html">Каталог</a>
+          <a href="about.html">О нас</a>
+          <a href="cart.html">Корзина</a>
+        </nav>
+      </div>
+      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

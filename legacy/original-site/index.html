@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>дзен</title>
+  <style>
+    @font-face {
+      font-family: 'Fugue';
+      src: url('./fonts/FUGUE_REGULAR.woff2') format('woff2'),
+           url('./fonts/FUGUE_REGULAR.woff') format('woff'),
+           url('./fonts/FUGUE_REGULAR.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: white;
+      font-family: 'Fugue', sans-serif;
+    }
+    body {
+  cursor: url('images/cursor-water.png') 16 16, auto;
+}
+
+    header {
+      display: flex;
+      gap: 16px;
+      padding: 24px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      
+    }
+
+    .nav-item {
+      width: 120px;
+      height: 120px;
+      border: 5px solid white;
+      text-decoration: none;
+      color: white;
+      font-size: 32px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+       margin-bottom: 50px
+    }
+
+    .nav-item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Вода-контейнер */
+    .water {
+      position: fixed;
+      top: 0;
+      width: 400px;
+      height: 400vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .water.left {
+      left: 0;
+    }
+
+    .water.right {
+      right: 0;
+    }
+
+    /* Сегменты воды */
+    .water-segment {
+      flex: 1;
+      background-image: url(images/water.png);
+      background-size: contain;
+      background-repeat: repeat-y;
+      background-position: center top;
+      filter: brightness(1.4) contrast(1.2);
+      transition: background-image 0.5s ease;
+      pointer-events: auto;
+    }
+
+    /* Глобальная замена фона при наведении на любую сторону */
+    body.water-hover .water-segment {
+      background-image: url(images/water.real.png);
+    }
+
+    .water.left .normal {
+      animation: waterFlowDown 20s linear infinite;
+    }
+
+    .water.left .flipped {
+      animation: waterFlowDown 20s linear infinite;
+      transform: scaleY(-1) scaleX(-1);
+    }
+
+    .water.right .normal {
+      animation: waterFlowUp 20s linear infinite;
+    }
+
+    .water.right .flipped {
+      animation: waterFlowUp 20s linear infinite;
+      transform: scaleY(-1) scaleX(-1);
+    }
+/* === Контейнер иероглифа === */
+.symbol {
+  position: relative;
+  width: calc(4 * 130px + 3 * 16px); /* как у хедера */
+  height: 400px;                       /* фиксированная высота */
+  margin: 32px auto;                   /* отступ сверху/снизу */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;                           /* пространство между вертикалями */
+}
+
+/* === Вертикальные полосы === */
+.symbol__vertical {
+  width: 130px;       /* толщина как у квадрата хедера */
+  height: 100%;       /* во всю высоту контейнера */
+  background-color: #dfe2ff;
+  flex-shrink: 0;     /* никогда не ужиматься */
+}
+
+/* === Горизонтальные полосы === */
+.symbol__horizontal {
+  position: absolute;
+  left: calc(130px + 16px);                /* отступ слева: ширина левой вертикали + gap */
+  width: calc(100% - (130px * 2 + 16px*2));/* между вертикалями */
+  height: 130px;                           /* та же толщина */
+  background-color: #dfe2ff;
+  flex-shrink: 0;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* === Верхняя и нижняя позиции === */
+.symbol__horizontal--top    { top: 0; }
+.symbol__horizontal--bottom { bottom: 50px; }
+
+/* === Адаптив под хедер (копируйте свои брейкпоинты) === */
+@media (max-width: 1440px) {
+  .symbol {
+    width: calc(4 * 110px + 3 * 16px);
+    height: 360px;
+    gap: 16px;
+  }
+  .symbol__vertical,
+  .symbol__horizontal {
+    width: 110px;
+    height: 110px;
+  }
+  .symbol__horizontal {
+    left: calc(110px + 16px);
+    width: calc(100% - (110px * 2 + 16px*2));
+  }
+}
+
+/* === Адаптив под хедер (копируйте свои брейкпоинты) === */
+@media (max-width: 1440px) {
+  .symbol {
+    width: calc(4 * 110px + 3 * 16px);
+    height: 360px;
+    gap: 16px;
+  }
+  /* вертикали растягиваем по высоте контейнера */
+  .symbol__vertical {
+    width: 110px;
+    height: 100%;
+    flex-shrink: 0;
+  }
+  /* горизонтали — фиксированной толщины */
+  .symbol__horizontal {
+    width: calc(100% - (110px * 2 + 16px * 2));
+    height: 110px;
+    left: calc(110px + 16px);
+  }
+  
+}
+
+@media (max-width: 1024px) {
+  .symbol {
+    width: calc(4 * 90px + 3 * 12px);
+    height: 320px;
+    gap: 12px;
+  }
+  .symbol__vertical {
+    width: 90px;
+    height: 100%;
+    flex-shrink: 0;
+  }
+  .symbol__horizontal {
+    width: calc(100% - (90px * 2 + 12px * 2));
+    height: 90px;
+    left: calc(90px + 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .symbol {
+    width: calc(4 * 70px + 3 * 8px);
+    height: 280px;
+    gap: 8px;
+  }
+  .symbol__vertical {
+    width: 70px;
+    height: 100%;
+    flex-shrink: 0;
+  }
+  .symbol__horizontal {
+    width: calc(100% - (70px * 2 + 8px * 2));
+    height: 70px;
+    left: calc(70px + 8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .symbol {
+    width: calc(4 * 60px + 3 * 6px);
+    height: 240px;
+    gap: 6px;
+  }
+  .symbol__vertical {
+    width: 60px;
+    height: 100%;
+    flex-shrink: 0;
+  }
+  .symbol__horizontal {
+    width: calc(100% - (60px * 2 + 6px * 2));
+    height: 60px;
+    left: calc(60px + 6px);
+  
+}
+
+}
+
+    @keyframes waterFlowDown {
+      0% { background-position-y: 0; }
+      100% { background-position-y: 100%; }
+    }
+
+    @keyframes waterFlowUp {
+      0% { background-position-y: 100%; }
+      100% { background-position-y: 0; }
+    }
+
+    /* Медиа-запросы */
+    @media (max-width: 1440px) {
+      .nav-item {
+        width: 100px;
+        height: 100px;
+        font-size: 26px;
+      }
+      .water {
+        width: 300px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-item {
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+        border-width: 3px;
+      }
+      .water {
+        width: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-item {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+        border-width: 2px;
+      }
+
+      header {
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .water {
+        width: 100px;
+        opacity: 0.4;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-item {
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+      }
+
+      .water {
+        width: 60px;
+        opacity: 0.3;
+      }
+    }
+  /* === Карточка под иероглифом === */
+.symbol-card {
+  width: calc(4 * 130px + 3 * 16px);
+  height: 400px;
+  margin: 32px auto;
+  border: 5px solid white;
+  background: transparent;
+  box-sizing: border-box;
+  position: relative; /* для абсолютного лого */
+}
+
+.symbol-card__content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.symbol-card__content h2 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+.symbol-card__content p {
+  margin: 16px 0 0 0;
+  font-size: 24px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/* === Логотип внутри карточки === */
+.symbol-card__logo {
+  position: absolute;
+  bottom: 16px;    /* <-- отступ от низа карточки */
+  left: 16px;      /* <-- отступ от левого края */
+  width: 40px;     /* <-- размер логотипа */
+  height: auto;
+  animation: logoMove 4s ease-in-out infinite alternate;
+  z-index: 1;      /* выше фона карточки */
+}
+
+/* Анимация движения логотипа */
+@keyframes logoMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% - 40px));
+  }
+}
+
+/* === Адаптив === */
+@media (max-width: 1440px) {
+  .symbol-card {
+    width: calc(4 * 110px + 3 * 16px);
+    height: 360px;
+  }
+  .symbol-card__content h2 { font-size: 20px; }
+  .symbol-card__content p  { font-size: 14px; }
+}
+
+@media (max-width: 1024px) {
+  .symbol-card {
+    width: calc(4 * 90px + 3 * 12px);
+    height: 320px;
+  }
+  .symbol-card__content h2 { font-size: 18px; }
+  .symbol-card__content p  { font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+  .symbol-card {
+    width: calc(4 * 70px + 3 * 8px);
+    height: 280px;
+  }
+  .symbol-card__content h2 { font-size: 16px; }
+  .symbol-card__content p  { font-size: 12px; }
+  .symbol-card__logo { width: 32px; }
+}
+
+@media (max-width: 480px) {
+  .symbol-card {
+    width: calc(4 * 60px + 3 * 6px);
+    height: 240px;
+  }
+  .symbol-card__content h2 { font-size: 14px; }
+  .symbol-card__content p  { font-size: 11px; }
+  .symbol-card__logo { width: 24px; }
+}
+/* === Статические квадратики под карточкой === */
+.static-squares {
+  /* Точно такая же ширина, как у символа, хедера и карточки */
+  width: calc(4 * 130px + 3 * 16px);
+  margin: 32px auto 0;   /* отступ сверху 32px, по центру */
+  display: flex;
+  gap: 16px;             /* межквадратный отступ */
+  /* без justify-content: center — они сами заполнят всю ширину контейнера */
+}
+
+.static-square {
+  /* ширина 120px + рамка 5px*2 = 130px */
+  width: 130px;
+  height: 130px;
+  box-sizing: border-box;  
+  border: 5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fugue', sans-serif;
+  font-size: 32px;
+  color: white;
+  text-align: center;
+}
+
+.static-square__logo {
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: contain;
+}
+
+/* Адаптив точно как в хедере */
+@media (max-width: 1440px) {
+  .static-squares {
+    width: calc(4 * 110px + 3 * 16px);
+  }
+  .static-square {
+    width: 110px;
+    height: 110px;
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .static-squares {
+    width: calc(4 * 90px + 3 * 12px);
+  }
+  .static-square {
+    width: 90px;
+    height: 90px;
+    font-size: 20px;
+    border-width: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .static-squares {
+    width: calc(4 * 70px + 3 * 8px);
+  }
+  .static-square {
+    width: 70px;
+    height: 70px;
+    font-size: 16px;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .static-squares {
+    width: calc(4 * 60px + 3 * 6px);
+  }
+  .static-square {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+}
+.static-square__logo {
+  /* чтобы точка вращения была по центру */
+  transform-origin: center center;
+  /* длительность одного оборота — 4s, можно регулировать */
+  animation: logoSpin 4s linear infinite;
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Вода по краям -->
+  <div class="water left">
+    <div class="water-segment normal"></div>
+    <div class="water-segment flipped"></div>
+  </div>
+
+  <div class="water right">
+    <div class="water-segment normal"></div>
+    <div class="water-segment flipped"></div>
+  </div>
+
+  <header>
+    <a href="index.html" class="nav-item">дзен</a>
+    <a href="merch.html" class="nav-item">мерч</a>
+    <a href="dates.html" class="nav-item">даты</a>
+    <a href="about.html" class="nav-item">о нас</a>
+  </header>
+<!-- Иероглиф -->
+<div class="symbol">
+  <div class="symbol__vertical"></div>
+
+  <div class="symbol__horizontal symbol__horizontal--top"></div>
+  <div class="symbol__horizontal symbol__horizontal--bottom"></div>
+
+  <div class="symbol__vertical"></div>
+</div>
+<!-- Карточка под иероглифом -->
+<div class="symbol-card">
+  <div class="symbol-card__content">
+    <h2>入り口 (с яп. «Вход») в пространство дзен. </h2>
+    <p>Добро пожаловать в цифровое пространство школы дзен. <br> Здесь представлена информция о наших мероприятиях, мерче и самой школе.</p>
+     <!-- Логотип, который должен «скользить» внутри карточки -->
+      </div>
+  <img src="images/logo.png" alt="Логотип" class="symbol-card__logo">
+</div>
+<!-- === Статические квадратики, аналогичные хедеру === -->
+<section class="static-squares">
+  <div class="static-square">2025</div>
+  <div class="static-square">ДЗЕН</div>
+  <div class="static-square">АП</div>
+  <div class="static-square">
+    <img src="images/logo.png" alt="Логотип" class="static-square__logo">
+  </div>
+  
+</section>
+
+
+
+  <script>
+    const segments = document.querySelectorAll('.water-segment');
+    segments.forEach(segment => {
+      segment.addEventListener('mouseenter', () => {
+        document.body.classList.add('water-hover');
+      });
+      segment.addEventListener('mouseleave', () => {
+        document.body.classList.remove('water-hover');
+      });
+    });
+  </script>
+  <script>
+  (function(){
+    const images = [
+      'images/fire.real.png',
+      'images/water.real.png',
+      'images/stone.real.png',
+      'images/air.real.png'
+    ];
+
+    const symbol = document.querySelector('.symbol');
+    // Выбираем все прямоугольники иероглифа
+    const parts = symbol.querySelectorAll('.symbol__vertical, .symbol__horizontal');
+    let idx = 0, intervalId;
+
+    symbol.addEventListener('mouseenter', () => {
+      // Сбросим индекс на начало
+      idx = 0;
+      // Запускаем интервал
+      intervalId = setInterval(() => {
+        // Сначала плавно скрываем текущий фон
+        parts.forEach(el => {
+          el.style.transition = 'opacity 0.5s ease';
+          el.style.opacity = '0';
+        });
+        // Через полсекунды меняем фон и плавно показываем
+        setTimeout(() => {
+          parts.forEach(el => {
+            el.style.backgroundImage = `url(${images[idx]})`;
+            el.style.backgroundSize  = 'cover';
+            el.style.backgroundRepeat = 'no-repeat';
+            el.style.opacity = '1';
+          });
+          // Переход к следующему изображению
+          idx = (idx + 1) % images.length;
+        }, 500);
+      }, 1000);
+    });
+
+    symbol.addEventListener('mouseleave', () => {
+      // Останавливаем циклы
+      clearInterval(intervalId);
+      // Возвращаем исходный цвет и удаляем картинку
+      parts.forEach(el => {
+        el.style.transition = '';
+        el.style.opacity = '1';
+        el.style.backgroundImage = '';
+        el.style.backgroundColor = '#dfe2ff';
+      });
+    });
+  })();
+</script>
+<script>
+(function(){
+  // Список картинок и соответствующих цветов блюра
+  const slides = [
+    { src: 'images/fire.real.png',  color: 'orange'  },
+    { src: 'images/water.real.png', color: 'deepskyblue' },
+    { src: 'images/stone.real.png', color: 'sienna'  },
+    { src: 'images/air.real.png',   color: 'white'   }
+  ];
+
+  const symbol = document.querySelector('.symbol');
+  const parts  = symbol.querySelectorAll('.symbol__vertical, .symbol__horizontal');
+  let idx      = 0, intervalId;
+
+  symbol.addEventListener('mouseenter', () => {
+    idx = 0;
+    intervalId = setInterval(() => {
+      // скрываем
+      parts.forEach(el => el.style.opacity = 0);
+
+      setTimeout(() => {
+        const slide = slides[idx];
+        parts.forEach(el => {
+          // подставляем фон
+          el.style.backgroundImage   = `url(${slide.src})`;
+          el.style.backgroundSize    = 'cover';
+          el.style.backgroundRepeat  = 'no-repeat';
+          // блюр/свечение по цвету
+          el.style.boxShadow         = `0 0 20px ${slide.color}`;
+          el.style.filter            = 'blur(2px)';
+          // показываем
+          el.style.transition         = 'opacity 0.5s ease';
+          el.style.opacity           = 1;
+        });
+        idx = (idx + 1) % slides.length;
+      }, 500);
+
+    }, 1000);
+  });
+
+  symbol.addEventListener('mouseleave', () => {
+    clearInterval(intervalId);
+    parts.forEach(el => {
+      // сбрасываем всё к исходному
+      el.style.transition      = '';
+      el.style.opacity         = 1;
+      el.style.backgroundImage = '';
+      el.style.backgroundColor = '#dfe2ff';
+      el.style.boxShadow       = '';
+      el.style.filter          = '';
+    });
+  });
+})();
+</script>
+
+
+
+</body>
+</html>

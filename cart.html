@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дзен — корзина</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-cart">
+  <header class="site-header page-shell">
+    <a class="brand" href="home.html">Дзен</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="index.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="cart.html" aria-current="page">Корзина <span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="cart-layout page-shell">
+    <h1>Корзина</h1>
+
+    <div id="cart-empty" class="cart-empty" hidden>
+      <p>Корзина пуста.</p>
+      <p style="margin-top:var(--gap-sm)"><a class="btn" href="index.html" style="display:inline-flex;margin-top:var(--gap-sm)">В каталог</a></p>
+    </div>
+
+    <div id="cart-table-wrap" hidden>
+      <table class="cart-table" aria-label="Товары в корзине">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Товар</th>
+            <th>Размер</th>
+            <th>Кол-во</th>
+            <th>Цена</th>
+            <th>Сумма</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
+    </div>
+
+    <div id="cart-summary" class="cart-summary" hidden></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner page-shell">
+      <div>
+        <p class="brand" style="margin-bottom:var(--gap-sm)">Дзен</p>
+        <nav class="site-footer__nav" aria-label="Нижняя навигация">
+          <a href="index.html">Каталог</a>
+          <a href="about.html">О нас</a>
+          <a href="cart.html">Корзина</a>
+        </nav>
+      </div>
+      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</body>
+</html>

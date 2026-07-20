@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Товар — Дзен</title>
+  <meta
+    name="description"
+    content="Страница товара бренда Дзен: детали, материалы, ритуал использования и добавление в корзину."
+  >
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/product.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/product.js" defer></script>
+</head>
+<body class="page page-product">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html" aria-label="Дзен, перейти на главную">
+        <img src="assets/images/logo.png" alt="" width="58" height="58">
+        <span class="brand-mark__text">
+          <span class="brand-mark__title">Дзен</span>
+          <span class="brand-mark__subtitle">product dossier</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html#catalog">Каталог</a>
+        <a href="index.html#essence">Философия</a>
+        <a href="index.html#house">Дом Дзен</a>
+      </nav>
+
+      <a class="cart-link" href="cart.html">
+        <span>Корзина</span>
+        <span class="cart-link__count" data-cart-count>0</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="section product-section">
+        <div class="product-root" data-product-view></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Рядом по ритму</p>
+            <h2 class="section-title">Другие предметы из той же системы</h2>
+          </div>
+          <p class="section-copy">
+            Связанные товары подтягиваются из единого набора данных, без ручного
+            дублирования разметки для каждой карточки.
+          </p>
+        </div>
+        <div class="catalog-grid catalog-grid--compact" data-related-products></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p class="site-footer__title">Дзен</p>
+        <p class="site-footer__copy">Страница товара и каталог используют одну общую архитектуру данных.</p>
+      </div>
+      <div class="site-footer__meta">
+        <p>Query-параметр: <code>product.html?id=...</code></p>
+        <p><span data-current-year></span></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

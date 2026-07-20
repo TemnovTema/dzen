@@ -1,0 +1,57 @@
+:root {
+  --color-bg: #101010;
+  --color-text: #f4f1e8;
+  --color-muted: rgba(244, 241, 232, 0.62);
+  --color-line: #f4f1e8;
+  --color-surface: #161616;
+  --color-surface-soft: #1d1d1d;
+  --color-accent: #1f22ff;
+  --color-social: #ff6b35;
+
+  --font-base: "Fugue", Arial, sans-serif;
+  --font-display: "Fugue Headline", "Fugue", Arial, sans-serif;
+
+  --page-max: 1440px;
+  --page-pad: 64px;
+
+  --gap-xs: 12px;
+  --gap-sm: 20px;
+  --gap-md: 32px;
+  --gap-lg: 48px;
+  --gap-xl: 72px;
+
+  --catalog-gap: 24px;
+
+  --border: 2px;
+  --card-size: 360px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --page-pad: 40px;
+    --card-size: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --page-pad: 20px;
+    --card-size: 100%;
+  }
+}
+
+@font-face {
+  font-family: "Fugue";
+  src: url("../assets/fonts/FUGUE_REGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fugue Headline";
+  src: url("../assets/fonts/FUGUE_HEADLINE.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

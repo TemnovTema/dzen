@@ -1,0 +1,155 @@
+.cart-root {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.cart-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.cart-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.cart-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.cart-item__media {
+  aspect-ratio: 1 / 1;
+}
+
+.cart-item__media img {
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.cart-item__body {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cart-item__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cart-item__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+}
+
+.qty-control button,
+.qty-control span {
+  min-width: 2.6rem;
+  min-height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-control button:hover,
+.qty-control button:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.text-button {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+
+.text-button:hover,
+.text-button:focus-visible {
+  color: var(--text);
+}
+
+.cart-item__line {
+  display: grid;
+  align-content: start;
+  justify-items: end;
+  gap: 0.5rem;
+}
+
+.summary-card {
+  display: grid;
+  gap: 1rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.summary-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.summary-row--total {
+  color: var(--text);
+  font-family: "Fugue Headline", sans-serif;
+  font-size: 1.1rem;
+}
+
+.summary-note {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1100px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .cart-item {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item__line {
+    justify-items: start;
+  }
+}

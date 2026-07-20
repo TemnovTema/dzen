@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дзен — товар</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page-product">
+  <header class="site-header page-shell">
+    <a class="brand" href="home.html">Дзен</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="index.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="cart.html">Корзина <span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="product-root"></div>
+
+    <section class="related-block" id="related-section" hidden>
+      <div class="page-shell">
+        <h2>Другие предметы</h2>
+        <div class="catalog-layout related-catalog">
+          <div id="related-root" class="catalog-grid" role="list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner page-shell">
+      <div>
+        <p class="brand" style="margin-bottom:var(--gap-sm)">Дзен</p>
+        <nav class="site-footer__nav" aria-label="Нижняя навигация">
+          <a href="index.html">Каталог</a>
+          <a href="about.html">О нас</a>
+          <a href="cart.html">Корзина</a>
+        </nav>
+      </div>
+      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/product.js" defer></script>
+</body>
+</html>

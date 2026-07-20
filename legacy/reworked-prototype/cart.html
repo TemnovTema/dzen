@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина — Дзен</title>
+  <meta
+    name="description"
+    content="Корзина онлайн-магазина Дзен: список выбранных товаров, количество и итоговая стоимость."
+  >
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/cart.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body class="page page-cart">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html" aria-label="Дзен, перейти на главную">
+        <img src="assets/images/logo.png" alt="" width="58" height="58">
+        <span class="brand-mark__text">
+          <span class="brand-mark__title">Дзен</span>
+          <span class="brand-mark__subtitle">cart / local prototype</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="index.html#catalog">Каталог</a>
+        <a href="index.html#essence">Философия</a>
+        <a href="index.html#house">Дом Дзен</a>
+      </nav>
+
+      <a class="cart-link is-current" href="cart.html" aria-current="page">
+        <span>Корзина</span>
+        <span class="cart-link__count" data-cart-count>0</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Корзина</p>
+            <h1 class="section-title">Собранные предметы</h1>
+          </div>
+          <p class="section-copy">
+            Корзина работает на чистом JavaScript и хранится локально. Для статического
+            сайта это надежнее, чем пытаться эмулировать серверную часть там, где ее нет.
+          </p>
+        </div>
+
+        <div class="cart-root" data-cart-root></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Рекомендации</p>
+            <h2 class="section-title">Можно добавить к текущему набору</h2>
+          </div>
+          <p class="section-copy">
+            Блок рекомендаций собирается автоматически из оставшихся товаров каталога.
+          </p>
+        </div>
+
+        <div class="catalog-grid catalog-grid--compact" data-cart-recommendations></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p class="site-footer__title">Дзен</p>
+        <p class="site-footer__copy">Прототип корзины без внешних библиотек и интеграций.</p>
+      </div>
+      <div class="site-footer__meta">
+        <p>Состояние хранится в <code>localStorage</code></p>
+        <p><span data-current-year></span></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

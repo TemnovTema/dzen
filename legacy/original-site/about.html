@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>о нас</title>
+  <style>
+    @font-face {
+      font-family: 'Fugue';
+      src: url('./fonts/FUGUE_REGULAR.woff2') format('woff2'),
+           url('./fonts/FUGUE_REGULAR.woff') format('woff'),
+           url('./fonts/FUGUE_REGULAR.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: white;
+      font-family: 'Fugue', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+       
+  cursor: url('images/cursor-stone.png') 16 16, auto;
+}
+    
+    header {
+      display: flex;
+      gap: 16px;
+      padding: 24px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .nav-item {
+      width: 120px;
+      height: 120px;
+      border: 5px solid white;
+      text-decoration: none;
+      color: white;
+      font-size: 32px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .nav-item:hover { background-color: rgba(255,255,255,0.1); }
+
+    .water {
+      position: fixed;
+      top: 0;
+      width: 400px;
+      height: 400vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .water.left { left: 0; }
+    .water.right { right: 0; }
+    .water-segment {
+  flex: 1;
+  background-image: url(images/stone.png);
+  background-size: contain;
+  background-repeat: repeat-y;
+  background-position: center top;
+  filter: brightness(1.4) contrast(1.2);
+  pointer-events: auto;
+  transition: background-image 0.3s ease, filter 0.6s ease;
+}
+
+    .water.left .normal,
+    .water.left .flipped { animation: waterFlowDown 20s linear infinite; }
+    .water.left .flipped { transform: scaleY(-1) scaleX(-1); }
+    .water.right .normal,
+    .water.right .flipped { animation: waterFlowUp 20s linear infinite; }
+    .water.right .flipped { transform: scaleY(-1) scaleX(-1); }
+    body.water-hover .water.left .normal,
+    body.water-hover .water.left .flipped {
+      background-image: url(images/stone.real.png);
+      animation: waterFlowDown 20s linear infinite, fireFlicker 1.5s infinite alternate;
+    }
+    
+    body.water-hover .water.right .normal,
+    body.water-hover .water.right .flipped {
+      background-image: url(images/stone.real.png);
+      animation: waterFlowUp 20s linear infinite, fireFlicker 1.5s infinite alternate;
+    }
+    @keyframes waterFlowDown {0%{background-position-y:0;}100%{background-position-y:100%;}}
+    @keyframes waterFlowUp   {0%{background-position-y:100%;}100%{background-position-y:0;}}
+
+    .about-wrapper {
+      position: relative;
+      width: calc(4 * 130px + 3 * 16px);
+      margin: 16px auto;
+      display: flex;
+      justify-content: space-between;
+      z-index: 3;
+    }
+    .about-card {
+      position: relative;
+      width: calc(2 * 130px + 1 * 16px);
+      height: 400px;
+      background-color: #111;
+      border: 5px solid white;
+      box-sizing: border-box;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+    .about-card:hover { transform: translateY(-10px); }
+
+    .about-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .about-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.6s ease;
+    }
+    .about-img-wrapper img.map-img,
+    .about-img-wrapper img.book-img {
+      opacity: 0;
+      z-index: 2;
+    }
+    .about-card:hover .about-img-wrapper img.map-img,
+    .about-card:hover .about-img-wrapper img.book-img {
+      opacity: 1;
+    }
+
+    .about-text-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 16px;
+      box-sizing: border-box;
+      font-family: 'Fugue', sans-serif;
+    }
+    .about-text-container h2 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+      text-align: left;
+    }
+    .about-text-container p {
+      margin-top: auto;
+      margin-bottom: 0;
+      font-size: 20px;
+      color: #aaa;
+      text-align: left;
+    }
+
+    .about-single-wrapper {
+      width: calc(4 * 130px + 3 * 16px);
+      margin: 16px auto;
+    }
+    .about-single-wrapper .about-card {
+      width: 100%;
+      height: 400px;
+    }
+    /* Плавная смена слайдера pic-#: */
+#about-changing-img {
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* регулирует длительность и кривую */
+}
+@media (max-width: 1440px) {
+  .nav-item {
+    width: 100px;
+    height: 100px;
+    font-size: 26px;
+  }
+  .water {
+    width: 300px;
+  }
+  body {
+    padding: 0 150px;
+  }
+  .about-wrapper,
+  .about-single-wrapper {
+    width: calc(4 * 110px + 3 * 16px);
+    gap: 16px;
+  }
+  .about-card {
+    width: calc(2 * 110px + 1 * 16px);
+    height: 360px;
+  }
+  .about-text-container h2 {
+    font-size: 16px;
+  }
+  .about-text-container p {
+    font-size: 13px;
+  }
+  .read-button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-item {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    border-width: 3px;
+  }
+  .water {
+    width: 200px;
+  }
+  body {
+    padding: 0 100px;
+  }
+  .about-wrapper,
+  .about-single-wrapper {
+    width: calc(4 * 90px + 3 * 12px);
+    gap: 12px;
+  }
+  .about-card {
+    width: calc(2 * 90px + 1 * 12px);
+    height: 320px;
+  }
+  .about-text-container {
+    padding: 12px;
+  }
+  .about-text-container h2 {
+    font-size: 15px;
+  }
+  .about-text-container p {
+    font-size: 12px;
+  }
+  .read-button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    width: 60px;
+    height: 60px;
+    font-size: 16px;
+    border-width: 2px;
+  }
+  header {
+    gap: 12px;
+    padding: 16px;
+  }
+  .water {
+    width: 100px;
+    opacity: 0.4;
+  }
+  body {
+    padding: 0 80px;
+  }
+  .about-wrapper,
+  .about-single-wrapper {
+    width: calc(4 * 70px + 3 * 8px);
+    gap: 8px;
+  }
+  .about-card {
+    width: calc(2 * 70px + 1 * 8px);
+    height: 280px;
+  }
+  .about-text-container h2 {
+    font-size: 14px;
+  }
+  .about-text-container p {
+    font-size: 11px;
+  }
+  .read-button {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+  .water {
+    width: 60px;
+    opacity: 0.3;
+  }
+  body {
+    padding: 0 60px;
+  }
+  .about-wrapper,
+  .about-single-wrapper {
+    width: calc(4 * 60px + 3 * 6px);
+    gap: 6px;
+  }
+  .about-card {
+    width: calc(2 * 60px + 1 * 6px);
+    height: 240px;
+  }
+  .about-text-container h2 {
+    font-size: 13px;
+  }
+  .about-text-container p {
+    font-size: 10px;
+  }
+  .read-button {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="water left">
+    <div class="water-segment normal"></div>
+    <div class="water-segment flipped"></div>
+  </div>
+  <div class="water right">
+    <div class="water-segment normal"></div>
+    <div class="water-segment flipped"></div>
+  </div>
+
+  <header>
+    <header>
+  <a href="index.html" class="nav-item">дзен</a>
+  <a href="merch.html" class="nav-item">мерч</a>
+  <a href="dates.html" class="nav-item">даты</a>
+  <a href="about.html" class="nav-item">о нас</a>
+</header>
+
+  </header>
+
+  <div class="about-wrapper">
+    <div class="about-card">
+      <div class="about-img-wrapper">
+        <img src="images/katana.png" alt="Катана" class="about-img">
+        <img src="images/map.png" alt="Карта" class="about-img map-img">
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-text-container">
+        <h2>Добро пожаловать <br>в  нашу школу</h2>
+        <p>Школа основана <br> на балансе четырёх стихий: воды, огня, земли и воздуха.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-single-wrapper">
+    <div class="about-card">
+      <img id="about-changing-img" src="images/pic-1.png" alt="Pic 1" class="about-img">
+    </div>
+  </div>
+
+  <div class="about-wrapper">
+    <div class="about-card">
+      <div class="about-text-container">
+        <h2>Многостраничное издание <br>о пространстве</h2>
+        <p>Рассказ о том как мы соединяем боевые искусства и глубокую философию дзен, обучая учеников не только физической стойкости, <br>но и внутренней гармонии.</p>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-img-wrapper">
+        <img src="images/mbook.png" alt="Книга" class="about-img">
+        <img src="images/book.png" alt="Книга внутренняя" class="about-img book-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="about-single-wrapper">
+    <div class="about-card">
+      <div class="about-text-container" style="justify-content: center; align-items: center; text-align: center;"></div> 
+        
+        <h2>До встречи в Дзене.   さよなら</h2>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.water-segment').forEach(seg => {
+      seg.addEventListener('mouseenter', () => document.body.classList.add('water-hover'));
+      seg.addEventListener('mouseleave', () => document.body.classList.remove('water-hover'));
+    });
+
+     const images = ["pic-1.png","pic-2.png","pic-3.png","pic-4.png","pic-5.png"];
+  let idx = 0;
+  const slider = document.getElementById("about-changing-img");
+
+  setInterval(() => {
+    // плавно скрываем
+    slider.style.opacity = 0;
+    // через полсекунды меняем src и возвращаем opacity = 1
+    setTimeout(() => {
+      idx = (idx + 1) % images.length;
+      slider.src = `images/${images[idx]}`;
+      slider.style.opacity = 1;
+    }, 500); // задержка = половина CSS-перехода
+  }, 4000);    // интервал между сменами
+  </script>
+  
+</body>
+</html>
