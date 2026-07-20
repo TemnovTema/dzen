@@ -12,6 +12,15 @@ const selectedColors = new Set();
 let activeSortMode = "default";
 let isFilterPanelOpen = false;
 
+const CATEGORY_FILTERS = new Set(["Одежда", "Аксессуары", "Печатное", "Другое"]);
+
+function setupCategoryFromUrl() {
+  const requestedCategory = new URLSearchParams(window.location.search).get("category");
+  if (requestedCategory && CATEGORY_FILTERS.has(requestedCategory)) {
+    activeCategoryFilter = requestedCategory;
+  }
+}
+
 const COLOR_KEYWORDS = {
   Чёрный: ["чёрн", "черн", "тёмн", "темн", "ноч", "black"],
   Белый: ["бел", "white"],
@@ -279,6 +288,11 @@ function setupCategoryFilters() {
   if (!buttons.length) return;
 
   buttons.forEach((btn) => {
+    btn.classList.toggle(
+      "is-active",
+      btn.getAttribute("data-filter-category") === activeCategoryFilter
+    );
+
     btn.addEventListener("click", () => {
       const value = btn.getAttribute("data-filter-category") || "all";
       activeCategoryFilter = value;
@@ -288,6 +302,13 @@ function setupCategoryFilters() {
           b.getAttribute("data-filter-category") === value
         )
       );
+      const url = new URL(window.location.href);
+      if (value === "all") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", value);
+      }
+      window.history.replaceState({}, "", url);
       renderCatalog();
     });
   });
@@ -348,6 +369,7 @@ function setupSortFilters() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  setupCategoryFromUrl();
   setupFilterToggle();
   setupCategoryFilters();
   setupSizeFilters();

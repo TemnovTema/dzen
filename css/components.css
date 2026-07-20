@@ -1,3 +1,20 @@
+.skip-link {
+  position: fixed;
+  top: var(--gap-xs);
+  left: var(--gap-xs);
+  z-index: 20;
+  padding: 0.65rem 0.9rem;
+  background: var(--color-text);
+  color: var(--color-bg);
+  text-decoration: none;
+  transform: translateY(calc(-100% - var(--gap-xs)));
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-nav {
   display: flex;
   flex-wrap: wrap;
@@ -652,4 +669,3 @@ a.product-card__hover-button {
 .not-found a {
   color: var(--color-text);
 }
-

@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Дзен — о бренде</title>
+  <meta name="description" content="Дзен создает одежду и предметы для города, соединяя восточную дисциплину с современной уличной культурой.">
+  <title>Дзен: о бренде</title>
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="preload" href="assets/images/hero-dzen.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/components.css?v=20260720">
   <link rel="stylesheet" href="css/pages.css">
 </head>
 <body class="page-about">
+  <a class="skip-link" href="#main-content">К содержанию</a>
+
   <header class="site-header page-shell">
     <a class="brand" href="home.html">Дзен</a>
     <nav class="site-nav" aria-label="Основная навигация">
@@ -21,57 +26,95 @@
     </nav>
   </header>
 
-  <main class="about-editorial page-shell">
-    <div class="about-editorial__grid">
-      <div class="about-editorial__mosaic" role="group" aria-label="Кадры из каталога">
-        <figure class="about-editorial__shot">
-          <img src="assets/images/kimono-main.png" alt="Кимоно Дзен — фактура ткани и крой">
-        </figure>
-        <figure class="about-editorial__shot">
-          <img src="assets/images/stickers-set-1.png" alt="Набор виниловых стикеров Дзен">
-        </figure>
-        <figure class="about-editorial__shot">
-          <img src="assets/images/ring-menpo-main.png" alt="Перстень с рельефом менпо">
-        </figure>
-        <figure class="about-editorial__shot">
-          <img src="assets/images/hoodie-atelier-main.png" alt="Худи Atelier Дзен — жаккард и вышивка">
-        </figure>
+  <main id="main-content" class="about-page">
+    <section class="about-hero page-shell" aria-labelledby="about-title">
+      <div class="about-hero__copy">
+        <h1 id="about-title">
+          <span>Тишина</span>
+          <span>имеет форму.</span>
+        </h1>
+        <p>Дзен создает одежду и предметы для города, соединяя восточную дисциплину с современной уличной культурой.</p>
+        <a class="about-button" href="index.html">В каталог <span aria-hidden="true">→</span></a>
       </div>
 
-      <div class="about-editorial__column">
-        <div class="about-editorial__story">
-          <p>
-            <strong class="about-editorial__brand">Дзен</strong> — независимый проект одежды и предметов вокруг спокойной формы, дисциплины и повседневного ритуала. Мы собираем гардероб из вещей с ясным силуэтом, честными материалами и спокойной графикой — без лишнего шума.
-          </p>
-          <p>
-            Визуальный язык <strong class="about-editorial__brand">Дзен</strong> сочетает модульную сетку, печать и детали, которые читаются и в студии, и в городе: от базовых слоёв до аксессуаров и печатной линии — как единая система знаков и фактур.
-          </p>
-        </div>
+      <figure class="about-hero__media">
+        <img src="assets/images/hero-dzen.png" width="1024" height="683" alt="Модель Дзен в движении на фоне пасмурного неба" fetchpriority="high">
+      </figure>
+    </section>
 
-        <div class="about-editorial__contact">
-          <p class="about-editorial__contact-line">
-            Сотрудничество и опт?<br>
-            <a href="mailto:hello@dzenbrand.ru">hello@dzenbrand.ru</a>
-          </p>
-          <p class="about-editorial__contact-line">
-            Заказы и поддержка<br>
-            <a href="mailto:support@dzenbrand.ru">support@dzenbrand.ru</a>
-          </p>
-          <p class="about-editorial__social">
-            Мы в Instagram <a href="https://www.instagram.com/dzen" rel="noopener noreferrer" target="_blank">@DZEN</a>
-          </p>
-        </div>
-
-        <p class="about-editorial__legal">
-          ООО «Дзен Лаб» · ИНН 0000000000 · Москва, Российская Федерация
-        </p>
-
-        <nav class="about-editorial__seasons" aria-label="Коллекции в каталоге">
-          <a href="index.html">Весна — лето 2026<span class="about-editorial__arrow" aria-hidden="true">→</span></a>
-          <a href="index.html">Осень — зима 2025<span class="about-editorial__arrow" aria-hidden="true">→</span></a>
-        </nav>
+    <section class="about-manifesto page-shell about-reveal" aria-labelledby="manifesto-title">
+      <div class="about-manifesto__inner">
+        <h2 id="manifesto-title">Мы не копируем традицию.</h2>
+        <p>Мы переводим ее в язык сегодняшнего дня: через крой, тактильные материалы и точную графику.</p>
       </div>
-    </div>
+    </section>
+
+    <section class="about-craft page-shell" aria-labelledby="craft-title">
+      <div class="about-craft__heading about-reveal">
+        <h2 id="craft-title">Вещи как система.</h2>
+        <p>Каждый предмет работает сам по себе и вместе с остальными. Важны не сезон и шум вокруг, а повседневная жизнь вещи.</p>
+      </div>
+
+      <div class="about-craft__grid">
+        <div class="about-craft__gallery about-reveal" role="group" aria-label="Предметы и образы Дзен">
+          <figure class="about-craft__image about-craft__image--main">
+            <img src="assets/images/kimono-main.png" width="1024" height="1024" alt="Кимоно Дзен, вид спереди и сзади" loading="lazy">
+          </figure>
+          <figure class="about-craft__image">
+            <img src="assets/images/hoodie-atelier-worn.png" width="1024" height="1024" alt="Худи Atelier Дзен на модели" loading="lazy">
+          </figure>
+          <figure class="about-craft__image">
+            <img src="assets/images/ring-menpo-main.png" width="1024" height="1024" alt="Перстень Дзен с рельефом менпо" loading="lazy">
+          </figure>
+        </div>
+
+        <div class="about-principles about-reveal">
+          <article>
+            <h3>Форма</h3>
+            <p>Ясный силуэт и свобода движения. Деталь появляется только тогда, когда она нужна.</p>
+          </article>
+          <article>
+            <h3>Материал</h3>
+            <p>Ткань, металл и бумага должны хорошо стареть, меняться со временем и оставаться живыми.</p>
+          </article>
+          <article>
+            <h3>Знак</h3>
+            <p>Графика связывает коллекции, но не превращает вещь в рекламный носитель.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-contact page-shell" aria-labelledby="contact-title">
+      <div class="about-contact__intro about-reveal">
+        <h2 id="contact-title">Остаемся на связи.</h2>
+        <p>По вопросам заказов, сотрудничества и опта пишите напрямую. Мы отвечаем без посредников.</p>
+      </div>
+
+      <div class="about-contact__links about-reveal">
+        <a href="mailto:hello@dzenbrand.ru">
+          <span>Сотрудничество и опт</span>
+          <strong>hello@dzenbrand.ru</strong>
+          <span class="about-contact__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="mailto:support@dzenbrand.ru">
+          <span>Заказы и поддержка</span>
+          <strong>support@dzenbrand.ru</strong>
+          <span class="about-contact__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.instagram.com/dzen" rel="noopener noreferrer" target="_blank">
+          <span>Instagram</span>
+          <strong>@DZEN</strong>
+          <span class="about-contact__arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <p class="about-contact__legal">
+        <span>ООО «Дзен Лаб»</span>
+        <span>ИНН 0000000000</span>
+        <span>Москва, Российская Федерация</span>
+      </p>
+    </section>
   </main>
 
   <footer class="site-footer">
