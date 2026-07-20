@@ -134,7 +134,7 @@ function groupProductsBySections(list) {
   return groups.filter((g) => g.items.length > 0);
 }
 
-function renderProductCard(p) {
+function renderProductCard(p, index = 0) {
   const title = escapeHtml(p.cardTitle || p.name);
   const fullName = escapeHtml(p.name);
   const price =
@@ -147,6 +147,7 @@ function renderProductCard(p) {
   const secondaryMarkup = secondaryImage
     ? `<img class="product-card__image product-card__image--secondary" src="${escapeHtml(secondaryImage)}" alt="${fullName}">`
     : "";
+  const cardNumber = String(index + 1).padStart(2, "0");
   return `
 <article class="product-card">
   <a class="product-card__media" href="${href}">
@@ -157,6 +158,7 @@ function renderProductCard(p) {
   <div class="product-card__meta">
     <a class="product-card__title" href="${href}">${title}</a>
     <p class="product-card__price">${price}</p>
+    <span class="product-card__number" aria-hidden="true">${cardNumber}</span>
   </div>
 </article>`;
 }
@@ -170,17 +172,23 @@ function activeFilterCount() {
   return count;
 }
 
-function renderCategoryHeader(title, count) {
+function renderCategoryHeader(title, count, sectionIndex = 0, sectionCount = 1) {
   const safeTitle = escapeHtml(title);
   const filterCount = activeFilterCount();
   const expanded = isFilterPanelOpen ? "true" : "false";
+  const currentSection = String(sectionIndex + 1).padStart(2, "0");
+  const totalSections = String(sectionCount).padStart(2, "0");
   return `
 <header class="category-header">
-  <h2 class="category-title">${safeTitle} <span class="category-count">(${count})</span></h2>
-  <button class="filter-trigger" type="button" data-filter-toggle aria-expanded="${expanded}" aria-controls="catalog-filters-panel">
+  <div class="category-header__cell">
+    <h2 class="category-title"><span class="category-index">${currentSection}</span>${safeTitle}</h2>
+  </div>
+  <button class="category-header__cell filter-trigger" type="button" data-filter-toggle aria-expanded="${expanded}" aria-controls="catalog-filters-panel">
     <span class="filter-trigger__label">Фильтр</span>
     <span class="filter-trigger__count">(${filterCount})</span>
   </button>
+  <p class="category-header__cell category-header__meta">${count} предметов</p>
+  <p class="category-header__cell category-header__position">${currentSection} / ${totalSections}</p>
 </header>`;
 }
 
@@ -221,11 +229,11 @@ function renderCatalog() {
     const groups = groupProductsBySections(visibleProducts);
     root.innerHTML = groups
       .map(
-        (group) => `
+        (group, index) => `
 <section class="catalog-section-block" data-section="${group.id}">
-  ${renderCategoryHeader(group.title, group.items.length)}
+  ${renderCategoryHeader(group.title, group.items.length, index, groups.length)}
   <div class="catalog-grid" role="list">
-    ${group.items.map(renderProductCard).join("")}
+    ${group.items.map((product, index) => renderProductCard(product, index)).join("")}
   </div>
 </section>`
       )
@@ -235,9 +243,9 @@ function renderCatalog() {
       activeCategoryFilter === "all" ? "Каталог" : activeCategoryFilter;
     root.innerHTML = `
 <section class="catalog-section-block">
-  ${renderCategoryHeader(title, visibleProducts.length)}
+  ${renderCategoryHeader(title, visibleProducts.length, 0, 1)}
   <div class="catalog-grid" role="list">
-    ${visibleProducts.map(renderProductCard).join("")}
+    ${visibleProducts.map((product, index) => renderProductCard(product, index)).join("")}
   </div>
 </section>`;
   }
@@ -245,6 +253,22 @@ function renderCatalog() {
   if (isFilterPanelOpen) {
     attachPanelToFirstSection();
   }
+}
+
+function syncCatalogMasthead() {
+  const count = document.querySelector("[data-catalog-total]");
+  if (count && typeof PRODUCTS !== "undefined") {
+    count.textContent = String(PRODUCTS.length).padStart(2, "0");
+  }
+
+  document.querySelectorAll("[data-catalog-category]").forEach((link) => {
+    const isCurrent = link.getAttribute("data-catalog-category") === activeCategoryFilter;
+    if (isCurrent) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
 }
 
 function syncFilterTriggers() {
@@ -309,6 +333,7 @@ function setupCategoryFilters() {
         url.searchParams.set("category", value);
       }
       window.history.replaceState({}, "", url);
+      syncCatalogMasthead();
       renderCatalog();
     });
   });
@@ -370,6 +395,7 @@ function setupSortFilters() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupCategoryFromUrl();
+  syncCatalogMasthead();
   setupFilterToggle();
   setupCategoryFilters();
   setupSizeFilters();

@@ -8,7 +8,7 @@
 .page-homepage .site-header {
   flex-wrap: nowrap;
   padding-block: 1.125rem;
-  border-bottom-width: 1px;
+  border-bottom-width: var(--border);
 }
 
 .page-homepage .site-footer {
@@ -215,7 +215,7 @@
   justify-content: space-between;
   gap: var(--gap-sm);
   padding-block: var(--gap-sm);
-  border-bottom: 1px solid rgba(244, 241, 232, 0.24);
+  border-bottom: var(--border) solid rgba(244, 241, 232, 0.24);
 }
 
 .home-product__meta a,
@@ -380,7 +380,7 @@
   gap: 0.55rem;
   margin-top: var(--gap-lg);
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid currentColor;
+  border-bottom: var(--border) solid currentColor;
   color: currentColor;
   font-size: 0.75rem;
   font-weight: 700;
@@ -730,7 +730,7 @@ body.page-cart .cart-layout {
 .page-about .site-header {
   flex-wrap: nowrap;
   padding-block: 1.125rem;
-  border-bottom-width: 1px;
+  border-bottom-width: var(--border);
 }
 
 .page-about .site-footer {

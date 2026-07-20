@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Дзен — каталог</title>
+  <meta name="description" content="Каталог Дзен: уличная одежда, аксессуары, печатные издания и предметы.">
+  <title>Дзен: каталог</title>
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/layout.css?v=20260720-6">
+  <link rel="stylesheet" href="css/components.css?v=20260720-6">
+  <link rel="stylesheet" href="css/pages.css?v=20260720-6">
 </head>
 <body class="page-home">
+  <a class="skip-link" href="#catalog-content">К каталогу</a>
+
   <header class="site-header page-shell">
     <a class="brand" href="home.html">Дзен</a>
     <nav class="site-nav" aria-label="Основная навигация">
@@ -21,8 +25,33 @@
     </nav>
   </header>
 
-  <main>
-    <section class="catalog-layout page-shell" aria-label="Каталог">
+  <main id="catalog-content">
+    <section class="catalog-masthead page-shell" aria-labelledby="catalog-title">
+      <div class="catalog-masthead__cell catalog-masthead__intro">
+        <p>Dzen / objects</p>
+        <h1 id="catalog-title">Каталог</h1>
+        <span>Собрано в систему</span>
+      </div>
+
+      <nav class="catalog-masthead__cell catalog-masthead__nav" aria-label="Категории каталога">
+        <a href="index.html?category=%D0%9E%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0" data-catalog-category="Одежда"><span>01</span> Одежда</a>
+        <a href="index.html?category=%D0%90%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B" data-catalog-category="Аксессуары"><span>02</span> Аксессуары</a>
+        <a href="index.html?category=%D0%9F%D0%B5%D1%87%D0%B0%D1%82%D0%BD%D0%BE%D0%B5" data-catalog-category="Печатное"><span>03</span> Печатное</a>
+        <a href="index.html?category=%D0%94%D1%80%D1%83%D0%B3%D0%BE%D0%B5" data-catalog-category="Другое"><span>04</span> Другое</a>
+      </nav>
+
+      <div class="catalog-masthead__cell catalog-masthead__count">
+        <span>В наличии</span>
+        <strong data-catalog-total>00</strong>
+        <p>предметов / 05 разделов</p>
+      </div>
+
+      <div class="catalog-masthead__cell catalog-masthead__mark" aria-hidden="true">
+        <img src="assets/images/logo.png" width="512" height="512" alt="">
+      </div>
+    </section>
+
+    <section class="catalog-layout page-shell" aria-label="Каталог товаров">
       <div class="catalog-main">
         <div class="filter-panel" id="catalog-filters-panel" hidden>
           <div class="filter-grid">
@@ -90,6 +119,6 @@
 
   <script src="js/data.js" defer></script>
   <script src="js/cart.js" defer></script>
-  <script src="js/main.js?v=20260720" defer></script>
+  <script src="js/main.js?v=20260720-6" defer></script>
 </body>
 </html>
