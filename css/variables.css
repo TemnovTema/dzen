@@ -8,8 +8,8 @@
   --color-accent: #1f22ff;
   --color-social: #ff6b35;
 
-  --font-base: "Onest", Arial, sans-serif;
-  --font-display: "Onest", Arial, sans-serif;
+  --font-base: "Tektur", Arial, sans-serif;
+  --font-display: "Tektur", Arial, sans-serif;
 
   --page-max: 1440px;
   --page-pad: 64px;
@@ -41,9 +41,10 @@
 }
 
 @font-face {
-  font-family: "Onest";
-  src: url("../assets/fonts/Onest-Variable.ttf") format("truetype");
-  font-weight: 100 900;
+  font-family: "Tektur";
+  src: url("../assets/fonts/Tektur-Variable.ttf") format("truetype");
+  font-weight: 400 900;
+  font-stretch: 75% 100%;
   font-style: normal;
   font-display: swap;
 }
