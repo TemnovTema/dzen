@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
   <link rel="stylesheet" href="css/base.css?v=20260721-dela">
   <link rel="stylesheet" href="css/layout.css?v=20260720-borderless">
-  <link rel="stylesheet" href="css/components.css?v=20260721-dela">
-  <link rel="stylesheet" href="css/pages.css?v=20260721-type-audit">
+  <link rel="stylesheet" href="css/components.css?v=20260721-icons">
+  <link rel="stylesheet" href="css/pages.css?v=20260721-icons">
 </head>
 <body class="page-homepage">
   <a class="skip-link" href="#main-content">К содержанию</a>
@@ -20,9 +20,9 @@
   <header class="site-header page-shell">
     <a class="brand" href="home.html" aria-current="page">Дзен</a>
     <nav class="site-nav" aria-label="Основная навигация">
-      <a href="index.html">Каталог</a>
-      <a href="about.html">О нас</a>
-      <a href="cart.html">Корзина <span class="cart-count">0</span></a>
+      <a href="index.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-catalog"></use></svg><span>Каталог</span></a>
+      <a href="about.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-brand"></use></svg><span>О нас</span></a>
+      <a href="cart.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-bag"></use></svg><span>Корзина</span> <span class="cart-count">0</span></a>
     </nav>
   </header>
 
@@ -43,7 +43,7 @@
           <p class="home-hero__label">Новая коллекция</p>
           <h1 id="home-title"><span>Город шумит.</span><span>Форма остаётся.</span></h1>
           <p class="home-hero__text">Уличная одежда и предметы Дзен для движения в своём ритме.</p>
-          <a class="home-button" href="index.html">Смотреть коллекцию <span aria-hidden="true">→</span></a>
+          <a class="home-button" href="index.html">Смотреть коллекцию <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></a>
         </div>
       </div>
     </section>
@@ -59,6 +59,7 @@
           <a class="home-product__media" href="product.html?id=hoodie-atelier-dzen">
             <img class="home-product__image home-product__image--primary" src="assets/images/hoodie-atelier-main.png" width="1024" height="1024" alt="Худи Atelier Дзен" loading="lazy">
             <img class="home-product__image home-product__image--secondary" src="assets/images/hoodie-atelier-worn.png" width="1024" height="1024" alt="Худи Atelier Дзен на модели" loading="lazy">
+            <span class="home-product__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
           </a>
           <div class="home-product__meta">
             <a href="product.html?id=hoodie-atelier-dzen">Худи Atelier</a>
@@ -70,6 +71,7 @@
           <a class="home-product__media" href="product.html?id=sweatshirt-elements-dzen">
             <img class="home-product__image home-product__image--primary" src="assets/images/sweatshirt-elements-worn.png" width="1024" height="1024" alt="Свитшот Стихии на модели" loading="lazy">
             <img class="home-product__image home-product__image--secondary" src="assets/images/sweatshirt-elements-main.png" width="1024" height="1024" alt="Свитшот Стихии" loading="lazy">
+            <span class="home-product__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
           </a>
           <div class="home-product__meta">
             <a href="product.html?id=sweatshirt-elements-dzen">Свитшот Стихии</a>
@@ -81,6 +83,7 @@
           <a class="home-product__media" href="product.html?id=crossbody-madfrenzy-dzen">
             <img class="home-product__image home-product__image--primary" src="assets/images/crossbody-madfrenzy-worn.png" width="1024" height="1024" alt="Кросс-боди MadFrenzy Дзен" loading="lazy">
             <img class="home-product__image home-product__image--secondary" src="assets/images/crossbody-madfrenzy-main.png" width="1024" height="1024" alt="Кросс-боди MadFrenzy Дзен на сером фоне" loading="lazy">
+            <span class="home-product__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
           </a>
           <div class="home-product__meta">
             <a href="product.html?id=crossbody-madfrenzy-dzen">Кросс-боди MadFrenzy</a>
@@ -92,6 +95,7 @@
           <a class="home-product__media" href="product.html?id=sunglasses-beyond-chaos-dzen">
             <img class="home-product__image home-product__image--primary" src="assets/images/sunglasses-beyond-chaos-main.png" width="1024" height="1024" alt="Очки Beyond Chaos Дзен" loading="lazy">
             <img class="home-product__image home-product__image--secondary" src="assets/images/sunglasses-beyond-chaos-worn.png" width="1024" height="1024" alt="Очки Beyond Chaos Дзен на модели" loading="lazy">
+            <span class="home-product__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
           </a>
           <div class="home-product__meta">
             <a href="product.html?id=sunglasses-beyond-chaos-dzen">Очки Beyond Chaos</a>
@@ -111,17 +115,17 @@
         <a class="home-route home-route--clothing" href="index.html?category=%D0%9E%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0">
           <img src="assets/images/hoodie-wash-dzen-worn.png" width="1024" height="1024" alt="Модель в худи Дзен" loading="lazy">
           <span class="home-route__overlay" aria-hidden="true"></span>
-          <span class="home-route__caption"><strong>Одежда</strong><span>Смотреть <span aria-hidden="true">↗</span></span></span>
+          <span class="home-route__caption"><strong>Одежда</strong><span>Смотреть <svg class="ui-icon ui-icon--open" aria-hidden="true"><use href="assets/icons.svg#icon-open"></use></svg></span></span>
         </a>
         <a class="home-route" href="index.html?category=%D0%90%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B">
           <img src="assets/images/backpack-atelier-worn.png" width="1024" height="1024" alt="Рюкзак Atelier Дзен на модели" loading="lazy">
           <span class="home-route__overlay" aria-hidden="true"></span>
-          <span class="home-route__caption"><strong>Аксессуары</strong><span>Смотреть <span aria-hidden="true">↗</span></span></span>
+          <span class="home-route__caption"><strong>Аксессуары</strong><span>Смотреть <svg class="ui-icon ui-icon--open" aria-hidden="true"><use href="assets/icons.svg#icon-open"></use></svg></span></span>
         </a>
         <a class="home-route" href="index.html?category=%D0%9F%D0%B5%D1%87%D0%B0%D1%82%D0%BD%D0%BE%D0%B5">
           <img src="assets/images/posters-set-1.png" width="1024" height="682" alt="Три постера Школа новых самураев" loading="lazy">
           <span class="home-route__overlay" aria-hidden="true"></span>
-          <span class="home-route__caption"><strong>Печатное</strong><span>Смотреть <span aria-hidden="true">↗</span></span></span>
+          <span class="home-route__caption"><strong>Печатное</strong><span>Смотреть <svg class="ui-icon ui-icon--open" aria-hidden="true"><use href="assets/icons.svg#icon-open"></use></svg></span></span>
         </a>
       </div>
     </section>
@@ -133,7 +137,7 @@
       <div class="home-story__copy">
         <h2 id="story-title">За пределами вещи.</h2>
         <p>Дзен существует между одеждой, печатью и движением. Мы строим не сезонный шум, а последовательный визуальный язык.</p>
-        <a class="home-inline-link" href="about.html">О бренде <span aria-hidden="true">↗</span></a>
+        <a class="home-inline-link" href="about.html">О бренде <svg class="ui-icon ui-icon--open" aria-hidden="true"><use href="assets/icons.svg#icon-open"></use></svg></a>
       </div>
     </section>
 
@@ -147,10 +151,12 @@
         <a class="home-look home-look--full" href="product.html?id=hoodie-wash-dzen">
           <img src="assets/images/hoodie-wash-dzen-worn.png" width="1024" height="1024" alt="Коричневое худи Дзен на модели" loading="lazy">
           <span>01 / Форма</span>
+          <span class="home-look__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
         </a>
         <a class="home-look home-look--detail" href="product.html?id=ring-menpo-dzen">
           <img src="assets/images/ring-menpo-worn.png" width="1024" height="1024" alt="Перстень Самурай Дзен на руке" loading="lazy">
           <span>02 / Деталь</span>
+          <span class="home-look__open" aria-hidden="true"><svg class="ui-icon ui-icon--open"><use href="assets/icons.svg#icon-open"></use></svg></span>
         </a>
       </div>
     </section>
@@ -160,7 +166,7 @@
         <h2 id="support-title">Нужна помощь с выбором?</h2>
         <p>Напишите нам о размере, посадке или заказе. Ответим напрямую.</p>
       </div>
-      <a class="home-support__link" href="mailto:support@dzenbrand.ru">support@dzenbrand.ru <span aria-hidden="true">↗</span></a>
+      <a class="home-support__link" href="mailto:support@dzenbrand.ru">support@dzenbrand.ru <svg class="ui-icon ui-icon--open" aria-hidden="true"><use href="assets/icons.svg#icon-open"></use></svg></a>
     </section>
   </main>
 
@@ -178,6 +184,6 @@
     </div>
   </footer>
 
-  <script src="js/cart.js" defer></script>
+  <script src="js/cart.js?v=20260721-icons" defer></script>
 </body>
 </html>

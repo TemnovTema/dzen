@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
   <link rel="stylesheet" href="css/base.css?v=20260721-dela">
   <link rel="stylesheet" href="css/layout.css?v=20260720-borderless">
-  <link rel="stylesheet" href="css/components.css?v=20260721-checkout">
-  <link rel="stylesheet" href="css/pages.css?v=20260721-checkout">
+  <link rel="stylesheet" href="css/components.css?v=20260721-icons">
+  <link rel="stylesheet" href="css/pages.css?v=20260721-icons">
 </head>
 <body class="page-checkout">
   <a class="skip-link" href="#main-content">К содержанию</a>
@@ -19,9 +19,9 @@
   <header class="site-header page-shell">
     <a class="brand" href="home.html">Дзен</a>
     <nav class="site-nav" aria-label="Основная навигация">
-      <a href="index.html">Каталог</a>
-      <a href="about.html">О нас</a>
-      <a href="cart.html" aria-current="page">Корзина <span class="cart-count">0</span></a>
+      <a href="index.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-catalog"></use></svg><span>Каталог</span></a>
+      <a href="about.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-brand"></use></svg><span>О нас</span></a>
+      <a href="cart.html" aria-current="page"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-bag"></use></svg><span>Корзина</span> <span class="cart-count">0</span></a>
     </nav>
   </header>
 
@@ -42,12 +42,12 @@
       <p class="commerce-kicker">Нечего оформлять</p>
       <h2 id="checkout-empty-title">Сначала соберите заказ.</h2>
       <p>Корзина пуста. Вернитесь в каталог и выберите нужные предметы.</p>
-      <a class="commerce-button commerce-button--primary" href="index.html">Открыть каталог <span aria-hidden="true">→</span></a>
+      <a class="commerce-button commerce-button--primary" href="index.html">Открыть каталог <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></a>
     </section>
 
     <div id="checkout-flow" class="checkout-flow" hidden>
       <form id="checkout-form" class="checkout-form" novalidate>
-        <a class="commerce-back-link" href="cart.html">← Вернуться в корзину</a>
+        <a class="commerce-back-link" href="cart.html"><svg class="ui-icon ui-icon--back" aria-hidden="true"><use href="assets/icons.svg#icon-back"></use></svg> Вернуться в корзину</a>
 
         <section class="checkout-panel" aria-labelledby="contact-title">
           <header class="checkout-panel__header">
@@ -115,7 +115,7 @@
 
         <div class="checkout-submit">
           <p id="checkout-form-error" class="checkout-form-error" role="alert"></p>
-          <button class="commerce-button commerce-button--primary" type="submit">Заказать <span aria-hidden="true">→</span></button>
+          <button class="commerce-button commerce-button--primary" type="submit">Заказать <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></button>
           <p>Оплата и стоимость доставки подтверждаются после проверки заявки.</p>
         </div>
       </form>
@@ -131,7 +131,7 @@
         <p id="checkout-success-message"></p>
       </div>
       <dl id="checkout-success-details" class="checkout-success__details"></dl>
-      <a class="commerce-button commerce-button--light" href="index.html">Вернуться в каталог <span aria-hidden="true">→</span></a>
+      <a class="commerce-button commerce-button--light" href="index.html">Вернуться в каталог <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></a>
     </section>
 
     <section id="checkout-recommendation" class="flow-recommendation" hidden aria-labelledby="checkout-recommendation-title"></section>
@@ -152,7 +152,7 @@
   </footer>
 
   <script src="js/data.js" defer></script>
-  <script src="js/cart.js?v=20260721-checkout" defer></script>
+  <script src="js/cart.js?v=20260721-icons" defer></script>
   <script src="js/checkout.js?v=20260721-checkout" defer></script>
 </body>
 </html>

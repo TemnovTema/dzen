@@ -1,4 +1,19 @@
 const CART_KEY = "dzenCart";
+const DZEN_ICONS = new Set([
+  "back",
+  "forward",
+  "minus",
+  "next",
+  "open",
+  "plus",
+  "prev",
+]);
+
+function renderIcon(name, className = "") {
+  if (!DZEN_ICONS.has(name)) return "";
+  const classes = ["ui-icon", className].filter(Boolean).join(" ");
+  return `<svg class="${classes}" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-${name}"></use></svg>`;
+}
 
 function getCart() {
   try {
@@ -182,6 +197,7 @@ function renderCommerceRecommendation(container, options) {
     </div>
     <a class="flow-recommendation__media" href="${productUrl}">
       <img src="${escapeHtmlCart(product.image)}" alt="${productName}" loading="lazy">
+      <span class="flow-recommendation__open" aria-hidden="true">${renderIcon("open", "ui-icon--open")}</span>
     </a>
     <div class="flow-recommendation__product">
       <div>
@@ -189,7 +205,7 @@ function renderCommerceRecommendation(container, options) {
         <p>${formatCartPrice(product.price)}</p>
       </div>
       <button class="commerce-button commerce-button--compact" type="button" data-recommendation-add>
-        Добавить <span aria-hidden="true">＋</span>
+        Добавить ${renderIcon("plus")}
       </button>
     </div>`;
 
@@ -234,9 +250,9 @@ function renderCartLine(line) {
         ${option ? `<p class="cart-line__option">${option}</p>` : ""}
         <div class="cart-line__footer">
           <div class="quantity-control" aria-label="Количество товара">
-            <button type="button" class="cart-qty-minus" aria-label="Уменьшить количество">−</button>
+            <button type="button" class="cart-qty-minus" aria-label="Уменьшить количество">${renderIcon("minus")}</button>
             <input type="number" class="cart-qty-input" min="1" value="${quantity}" aria-label="Количество">
-            <button type="button" class="cart-qty-plus" aria-label="Увеличить количество">+</button>
+            <button type="button" class="cart-qty-plus" aria-label="Увеличить количество">${renderIcon("plus")}</button>
           </div>
           <p class="cart-line__total"><span>Сумма</span><strong>${formatCartPrice(lineTotal)}</strong></p>
         </div>
@@ -291,7 +307,7 @@ function renderCartSummary(summary, cart) {
       <div class="order-summary__total"><dt>Итого сейчас</dt><dd>${formatCartPrice(total)}</dd></div>
     </dl>
     <p class="order-summary__note">Состав заказа можно изменить до отправки заявки.</p>
-    <a class="commerce-button commerce-button--primary" href="checkout.html">Перейти к оформлению <span aria-hidden="true">→</span></a>
+    <a class="commerce-button commerce-button--primary" href="checkout.html">Перейти к оформлению ${renderIcon("forward", "ui-icon--forward")}</a>
     <a class="order-summary__continue" href="index.html">Продолжить покупки</a>`;
 }
 

@@ -370,8 +370,10 @@
   position: absolute;
   top: 50%;
   z-index: 1;
+  display: grid;
   width: 2.25rem;
   height: 2.25rem;
+  place-items: center;
   margin-top: -1.125rem;
   padding: 0;
   border: var(--border) solid rgba(244, 241, 232, 0.35);
@@ -381,6 +383,11 @@
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.product-page__nav .ui-icon {
+  width: 1rem;
+  height: 1rem;
 }
 
 .product-page__nav:hover,

@@ -48,6 +48,7 @@ function renderRelatedCard(product) {
   <a class="product-card__media" href="${href}">
     <img class="product-card__image product-card__image--primary" src="${escapeHtml(primary)}" alt="${fullName}">
     ${secondaryMarkup}
+    <span class="product-card__open" aria-hidden="true">${renderIcon("open", "ui-icon--open")}</span>
   </a>
   <div class="product-card__meta">
     <a class="product-card__title" href="${href}">${title}</a>
@@ -143,9 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
 <div class="product-page__field">
   <p class="product-page__label">количество</p>
   <div class="quantity-control">
-    <button type="button" id="qty-minus" aria-label="Уменьшить">−</button>
+    <button type="button" id="qty-minus" aria-label="Уменьшить">${renderIcon("minus")}</button>
     <input type="number" id="qty-input" min="1" value="1" aria-label="Количество">
-    <button type="button" id="qty-plus" aria-label="Увеличить">+</button>
+    <button type="button" id="qty-plus" aria-label="Увеличить">${renderIcon("plus")}</button>
   </div>
 </div>`;
 
@@ -154,16 +155,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const navNextHidden = showGalleryNav ? "" : " hidden";
 
   root.innerHTML = `
-<div class="product-page__wrap page-shell">
+  <div class="product-page__wrap page-shell">
   <div class="product-page__bar">
-    <a href="index.html" class="product-page__back" aria-label="К каталогу">каталог</a>
+    <a href="index.html" class="product-page__back" aria-label="К каталогу">${renderIcon("back", "ui-icon--back")} каталог</a>
   </div>
   <section class="product-page" aria-label="Карточка товара">
     <div class="product-page__media-col">
       <div class="product-page__media" role="region" aria-label="Фотографии товара">
         <img id="product-gallery-img" class="product-page__img" src="${escapeHtml(galleryImages[0])}" alt="${escapeHtml(product.name)}">
-        <button type="button" class="product-page__nav product-page__nav--prev" id="gallery-prev" aria-label="Предыдущее фото"${navPrevHidden}>‹</button>
-        <button type="button" class="product-page__nav product-page__nav--next" id="gallery-next" aria-label="Следующее фото"${navNextHidden}>›</button>
+        <button type="button" class="product-page__nav product-page__nav--prev" id="gallery-prev" aria-label="Предыдущее фото"${navPrevHidden}>${renderIcon("prev")}</button>
+        <button type="button" class="product-page__nav product-page__nav--next" id="gallery-next" aria-label="Следующее фото"${navNextHidden}>${renderIcon("next")}</button>
       </div>
     </div>
     <div class="product-page__info">

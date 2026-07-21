@@ -152,6 +152,7 @@ function renderProductCard(p) {
   <a class="product-card__media" href="${href}">
     <img class="product-card__image product-card__image--primary" src="${escapeHtml(primaryImage)}" alt="${fullName}">
     ${secondaryMarkup}
+    <span class="product-card__open" aria-hidden="true">${renderIcon("open", "ui-icon--open")}</span>
   </a>
 
   <div class="product-card__meta">
