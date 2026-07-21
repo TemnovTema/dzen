@@ -298,7 +298,7 @@
 .home-route__caption strong {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 4.25rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 0.9;
 }
