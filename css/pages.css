@@ -59,7 +59,7 @@
   left: clamp(1.5rem, 4vw, 4rem);
   bottom: clamp(1.5rem, 5vw, 4.5rem);
   z-index: 2;
-  max-width: min(42rem, calc(100% - 3rem));
+  max-width: min(52rem, calc(100% - 3rem));
 }
 
 .home-hero__label {
@@ -72,9 +72,9 @@
 .home-hero h1 {
   margin: 0;
   max-width: none;
-  font-size: clamp(3rem, 5.8vw, 6rem);
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.75rem, 4.8vw, 4.75rem);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -144,9 +144,10 @@
 
 .home-section-heading h2 {
   margin: 0;
-  font-size: clamp(2.75rem, 5.6vw, 5.75rem);
-  line-height: 0.88;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.4rem, 4.4vw, 4.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .home-section-heading p {
@@ -227,7 +228,11 @@
 }
 
 .home-product__meta a {
+  min-width: 0;
+  overflow: hidden;
   text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .home-product__meta a:hover,
@@ -289,18 +294,17 @@
   position: absolute;
   inset: auto var(--gap-md) var(--gap-md);
   z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--gap-sm);
+  display: grid;
+  justify-items: start;
+  gap: var(--gap-xs);
 }
 
 .home-route__caption strong {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 4.25rem);
+  font-size: clamp(1.75rem, 3vw, 3.5rem);
   font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
 }
 
 .home-route__caption > span {
@@ -357,11 +361,12 @@
 }
 
 .home-story__copy h2 {
-  max-width: 8ch;
+  max-width: 12ch;
   margin: 0;
-  font-size: clamp(3rem, 5.6vw, 6rem);
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.4rem, 3.7vw, 4.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .home-story__copy p {
@@ -455,11 +460,12 @@
 }
 
 .home-support h2 {
-  max-width: 13ch;
+  max-width: 15ch;
   margin: 0;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.25rem, 3.6vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .home-support p {
@@ -588,7 +594,8 @@
   }
 
   .home-hero h1 {
-    font-size: clamp(2.15rem, 8.8vw, 3.5rem);
+    font-size: clamp(1.5rem, 7vw, 2.7rem);
+    line-height: 0.96;
   }
 
   .home-hero__text {
@@ -608,7 +615,7 @@
   }
 
   .home-section-heading h2 {
-    font-size: clamp(2.7rem, 14vw, 4.25rem);
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
   }
 
   .home-product-grid,
@@ -650,7 +657,12 @@
   }
 
   .home-story__copy h2 {
-    font-size: clamp(3rem, 14vw, 4.25rem);
+    max-width: none;
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
+  }
+
+  .home-support h2 {
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
   }
 
   .home-lookbook__grid {
