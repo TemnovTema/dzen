@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Корзина Дзен: проверьте состав заказа и перейдите к оформлению доставки.">
   <title>Дзен — корзина</title>
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
   <link rel="stylesheet" href="css/base.css?v=20260721-dela">
   <link rel="stylesheet" href="css/layout.css?v=20260720-borderless">
-  <link rel="stylesheet" href="css/components.css?v=20260721-dela">
-  <link rel="stylesheet" href="css/pages.css?v=20260721-dela">
+  <link rel="stylesheet" href="css/components.css?v=20260721-checkout">
+  <link rel="stylesheet" href="css/pages.css?v=20260721-checkout">
 </head>
 <body class="page-cart">
+  <a class="skip-link" href="#main-content">К содержанию</a>
+
   <header class="site-header page-shell">
     <a class="brand" href="home.html">Дзен</a>
     <nav class="site-nav" aria-label="Основная навигация">
@@ -21,38 +25,47 @@
     </nav>
   </header>
 
-  <main class="cart-layout page-shell">
-    <h1>Корзина</h1>
+  <main id="main-content" class="cart-layout page-shell">
+    <header class="commerce-hero">
+      <div>
+        <p class="commerce-kicker">Шаг 01 / 03</p>
+        <h1>Корзина</h1>
+      </div>
+      <ol class="checkout-steps" aria-label="Этапы оформления заказа">
+        <li aria-current="step"><span>01</span> Корзина</li>
+        <li><span>02</span> Доставка</li>
+        <li><span>03</span> Готово</li>
+      </ol>
+    </header>
 
-    <div id="cart-empty" class="cart-empty" hidden>
-      <p>Корзина пуста.</p>
-      <p style="margin-top:var(--gap-sm)"><a class="btn" href="index.html" style="display:inline-flex;margin-top:var(--gap-sm)">В каталог</a></p>
+    <section id="cart-empty" class="commerce-empty" hidden aria-labelledby="cart-empty-title">
+      <p class="commerce-kicker">Пока тихо</p>
+      <h2 id="cart-empty-title">Корзина пуста.</h2>
+      <p>Выберите вещь или предмет, с которого начнётся ваш заказ.</p>
+      <a class="commerce-button commerce-button--primary" href="index.html">Открыть каталог <span aria-hidden="true">→</span></a>
+    </section>
+
+    <div id="cart-content" class="cart-flow" hidden>
+      <div class="cart-grid">
+        <section class="cart-lines" aria-labelledby="cart-lines-title">
+          <header class="cart-lines__header">
+            <h2 id="cart-lines-title">Состав заказа</h2>
+            <p id="cart-lines-count"></p>
+          </header>
+          <div id="cart-body" class="cart-lines__list" aria-live="polite"></div>
+        </section>
+
+        <aside id="cart-summary" class="order-summary" aria-labelledby="cart-summary-title"></aside>
+      </div>
     </div>
 
-    <div id="cart-table-wrap" hidden>
-      <table class="cart-table" aria-label="Товары в корзине">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Товар</th>
-            <th>Размер</th>
-            <th>Кол-во</th>
-            <th>Цена</th>
-            <th>Сумма</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="cart-body"></tbody>
-      </table>
-    </div>
-
-    <div id="cart-summary" class="cart-summary" hidden></div>
+    <section id="cart-recommendation" class="flow-recommendation" aria-labelledby="cart-recommendation-title"></section>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__inner page-shell">
       <div>
-        <p class="brand" style="margin-bottom:var(--gap-sm)">Дзен</p>
+        <p class="brand commerce-footer__brand">Дзен</p>
         <nav class="site-footer__nav" aria-label="Нижняя навигация">
           <a href="index.html">Каталог</a>
           <a href="about.html">О нас</a>
@@ -64,6 +77,6 @@
   </footer>
 
   <script src="js/data.js" defer></script>
-  <script src="js/cart.js" defer></script>
+  <script src="js/cart.js?v=20260721-checkout" defer></script>
 </body>
 </html>
