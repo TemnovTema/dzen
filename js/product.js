@@ -116,7 +116,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
-  const galleryImages = hasVariants ? [product.image] : getGalleryImages(product);
+  const hasVariantGalleries =
+    hasVariants &&
+    product.variants.some(
+      (variant) => Array.isArray(variant.images) && variant.images.length > 0
+    );
+  let galleryImages =
+    hasVariants && !hasVariantGalleries
+      ? [product.image]
+      : getGalleryImages(product);
   const needsSize = product.sizes && product.sizes.length > 0;
   const needsVariant = hasVariants;
   const variantLabel = product.variantLabel || "набор";
@@ -203,11 +211,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  if (showGalleryNav && prevBtn && nextBtn) {
-    prevBtn.hidden = false;
-    nextBtn.hidden = false;
+  function updateGalleryNav() {
+    const shouldShow = galleryImages.length > 1;
+    if (prevBtn) prevBtn.hidden = !shouldShow;
+    if (nextBtn) nextBtn.hidden = !shouldShow;
+  }
+
+  if (prevBtn && nextBtn) {
     prevBtn.addEventListener("click", () => setGalleryIndex(galleryIndex - 1));
     nextBtn.addEventListener("click", () => setGalleryIndex(galleryIndex + 1));
+    updateGalleryNav();
   }
 
   if (needsSize) {
@@ -247,9 +260,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const variant = product.variants.find((v) => v.id === input.value);
         if (!variant) return;
         selectedVariant = variant;
-        if (imgEl && variant.image) {
-          imgEl.src = variant.image;
-        }
+        galleryImages =
+          Array.isArray(variant.images) && variant.images.length > 0
+            ? variant.images
+            : [variant.image || product.image];
+        setGalleryIndex(0);
+        updateGalleryNav();
         if (variantMessage) {
           variantMessage.textContent = "";
           variantMessage.classList.remove("field-message--error");

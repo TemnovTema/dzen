@@ -594,7 +594,7 @@ const PRODUCTS = [
     image: "assets/images/cargo-vector-black.jpg",
     images: [
       "assets/images/cargo-vector-black.jpg",
-      "assets/images/cargo-vector-grey.jpg",
+      "assets/images/cargo-vector-black-worn.jpg",
     ],
     description:
       "Широкие карго из плотного рипстопа: объёмные карманы, анатомические швы и утяжки по низу. Одна форма в четырёх городских оттенках.",
@@ -607,6 +607,10 @@ const PRODUCTS = [
         label: "Чёрный",
         swatch: "#111214",
         image: "assets/images/cargo-vector-black.jpg",
+        images: [
+          "assets/images/cargo-vector-black.jpg",
+          "assets/images/cargo-vector-black-worn.jpg",
+        ],
       },
       {
         id: "grey",
@@ -642,7 +646,10 @@ const PRODUCTS = [
     category: "Одежда",
     price: 3890,
     image: "assets/images/cargo-shorts-grid-black.jpg",
-    images: ["assets/images/cargo-shorts-grid-black.jpg"],
+    images: [
+      "assets/images/cargo-shorts-grid-black.jpg",
+      "assets/images/cargo-shorts-grid-black-worn.jpg",
+    ],
     description:
       "Чёрные широкие шорты до колена с объёмными карманами и точечными синими закрепками. Свободная городская форма на тёплый сезон.",
     material: "Хлопок, нейлон",
