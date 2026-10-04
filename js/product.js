@@ -12,10 +12,17 @@ function getQueryId() {
 }
 
 function renderNotFound(root) {
+  document.title = "Товар не найден — Дзен";
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta) {
+    descriptionMeta.content = "Запрошенный товар не найден в каталоге Дзен.";
+  }
   root.innerHTML = `
 <section class="not-found page-shell">
-  <p>Товар не найден.</p>
-  <p style="margin-top:1rem"><a href="index.html">В каталог</a></p>
+  <p class="commerce-kicker">Ошибка / 404</p>
+  <h1>Товар не найден.</h1>
+  <p>Возможно, предмет был перемещён или ссылка устарела.</p>
+  <p class="not-found__action"><a href="index.html">В каталог</a></p>
 </section>`;
   const rel = document.getElementById("related-section");
   if (rel) rel.hidden = true;
@@ -114,6 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderNotFound(root);
     return;
   }
+
+  document.title = `${product.cardTitle || product.name} — Дзен`;
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta) descriptionMeta.content = product.description;
 
   const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
   const hasVariantGalleries =

@@ -52,7 +52,7 @@ function renderCheckoutSummary(cart) {
         .map(
           (item) => `
             <article class="checkout-summary__item">
-              <img src="${escapeHtmlCart(item.image)}" alt="">
+              <img src="${escapeHtmlCart(item.image)}" alt="${escapeHtmlCart(item.name)}">
               <div>
                 <h3>${escapeHtmlCart(item.name)}</h3>
                 <p>${item.size ? `${escapeHtmlCart(item.size)} · ` : ""}${item.quantity} шт.</p>
@@ -88,6 +88,7 @@ function validateCheckoutForm(form) {
     city: "Укажите город.",
     postalCode: "Укажите индекс.",
     street: "Укажите улицу и дом.",
+    privacy: "Подтвердите согласие с политикой конфиденциальности.",
   };
   let firstInvalid = null;
 

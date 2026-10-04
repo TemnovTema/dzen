@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
   <link rel="stylesheet" href="css/base.css?v=20260721-dela">
-  <link rel="stylesheet" href="css/layout.css?v=20261004-bottoms">
-  <link rel="stylesheet" href="css/components.css?v=20260721-icons">
-  <link rel="stylesheet" href="css/pages.css?v=20260721-icons">
+  <link rel="stylesheet" href="css/layout.css?v=20261005-release">
+  <link rel="stylesheet" href="css/components.css?v=20261005-release">
+  <link rel="stylesheet" href="css/pages.css?v=20261005-release">
 </head>
 <body class="page-checkout">
   <a class="skip-link" href="#main-content">К содержанию</a>
@@ -113,6 +113,12 @@
           </div>
         </section>
 
+        <label class="checkout-consent">
+          <input type="checkbox" name="privacy" aria-describedby="privacy-error" required>
+          <span>Я согласен с <a href="privacy.html" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>.</span>
+          <small id="privacy-error" class="checkout-field__error" data-error-for="privacy"></small>
+        </label>
+
         <div class="checkout-submit">
           <p id="checkout-form-error" class="checkout-form-error" role="alert"></p>
           <button class="commerce-button commerce-button--primary" type="submit">Заказать <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></button>
@@ -147,7 +153,7 @@
           <a href="cart.html">Корзина</a>
         </nav>
       </div>
-      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.</p>
+      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.<a href="privacy.html">Конфиденциальность</a></p>
     </div>
   </footer>
 

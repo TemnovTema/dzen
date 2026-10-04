@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Карточка товара Дзен: фотографии, характеристики, варианты и размеры.">
-  <title>Дзен — товар</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Страница не найдена в магазине Дзен.">
+  <title>404 — Дзен</title>
   <link rel="icon" href="assets/images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="css/components.css?v=20261005-release">
   <link rel="stylesheet" href="css/pages.css?v=20261005-release">
 </head>
-<body class="page-product">
+<body class="page-error">
   <a class="skip-link" href="#main-content">К содержанию</a>
 
   <header class="site-header page-shell">
@@ -25,23 +26,26 @@
     </nav>
   </header>
 
-  <main id="main-content">
-    <div id="product-root"></div>
-
-    <section class="related-block" id="related-section" hidden>
-      <div class="page-shell">
-        <h2>Другие предметы</h2>
-        <div class="catalog-layout related-catalog">
-          <div id="related-root" class="catalog-grid" role="list"></div>
+  <main id="main-content" class="error-page page-shell">
+    <div class="error-page__inner">
+      <div>
+        <p class="error-page__code" aria-hidden="true">404</p>
+        <h1>Маршрут потерян.</h1>
+      </div>
+      <div class="error-page__copy">
+        <p>Такой страницы нет или она была перемещена. Вернитесь к коллекции и продолжите движение оттуда.</p>
+        <div class="error-page__actions">
+          <a class="commerce-button commerce-button--primary" href="index.html">Открыть каталог <svg class="ui-icon ui-icon--forward" aria-hidden="true"><use href="assets/icons.svg#icon-forward"></use></svg></a>
+          <a class="commerce-button" href="home.html">На главную</a>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__inner page-shell">
       <div>
-        <p class="brand" style="margin-bottom:var(--gap-sm)">Дзен</p>
+        <p class="brand commerce-footer__brand">Дзен</p>
         <nav class="site-footer__nav" aria-label="Нижняя навигация">
           <a href="index.html">Каталог</a>
           <a href="about.html">О нас</a>
@@ -52,8 +56,6 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=20261004-worn" defer></script>
   <script src="js/cart.js?v=20261004-bottoms" defer></script>
-  <script src="js/product.js?v=20261004-worn" defer></script>
 </body>
 </html>

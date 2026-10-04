@@ -42,9 +42,23 @@
 }
 
 .site-footer__meta {
+  display: grid;
+  gap: 0.45rem;
   max-width: 28ch;
   font-size: 0.875rem;
   color: var(--color-muted);
+}
+
+.site-footer__meta a {
+  width: fit-content;
+  color: var(--color-text);
+  text-underline-offset: 0.22em;
+}
+
+.site-footer__meta a:hover,
+.site-footer__meta a:focus-visible {
+  color: var(--color-accent);
+  outline: none;
 }
 
 .catalog-hero {

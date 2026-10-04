@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Как демонстрационный магазин Дзен хранит данные корзины и оформления заказа.">
+  <title>Дзен — конфиденциальность</title>
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css?v=20260721-dela">
+  <link rel="stylesheet" href="css/base.css?v=20260721-dela">
+  <link rel="stylesheet" href="css/layout.css?v=20261005-release">
+  <link rel="stylesheet" href="css/components.css?v=20261005-release">
+  <link rel="stylesheet" href="css/pages.css?v=20261005-release">
+</head>
+<body class="page-legal">
+  <a class="skip-link" href="#main-content">К содержанию</a>
+
+  <header class="site-header page-shell">
+    <a class="brand" href="home.html">Дзен</a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="index.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-catalog"></use></svg><span>Каталог</span></a>
+      <a href="about.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-brand"></use></svg><span>О нас</span></a>
+      <a href="cart.html"><svg class="ui-icon site-nav__icon" aria-hidden="true"><use href="assets/icons.svg#icon-bag"></use></svg><span>Корзина</span> <span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content" class="legal-page page-shell">
+    <header class="legal-page__header">
+      <div>
+        <p class="commerce-kicker">Документ / 01</p>
+        <h1>О данных.</h1>
+      </div>
+      <p>Эта страница описывает работу текущей демонстрационной версии магазина Дзен. Она не скрывает технических ограничений прототипа.</p>
+    </header>
+
+    <div class="legal-page__content">
+      <section class="legal-page__section">
+        <h2>Какие данные используются</h2>
+        <p>При оформлении пользователь вводит имя, телефон, электронную почту и адрес доставки. Корзина содержит идентификаторы товаров, варианты и количество.</p>
+      </section>
+      <section class="legal-page__section">
+        <h2>Где они хранятся</h2>
+        <p>Корзина сохраняется в localStorage браузера. Собранная заявка сохраняется в sessionStorage и удаляется после завершения сессии браузера.</p>
+      </section>
+      <section class="legal-page__section">
+        <h2>Передача данных</h2>
+        <p>В текущей версии данные формы не отправляются на сервер, в платёжную систему или третьим лицам. Оформление демонстрирует интерфейс и логику будущего магазина.</p>
+      </section>
+      <section class="legal-page__section">
+        <h2>Как удалить данные</h2>
+        <p>Очистите данные сайта в настройках браузера. Корзина также очищается после успешного завершения демонстрационного оформления.</p>
+      </section>
+      <section class="legal-page__section">
+        <h2>Внешние ссылки</h2>
+        <p>Переход в Instagram открывает внешний сервис, который применяет собственные правила обработки данных.</p>
+      </section>
+      <section class="legal-page__section">
+        <h2>Обновление документа</h2>
+        <p>Перед подключением реального приёма заказов документ будет дополнен реквизитами оператора, сроками хранения и рабочим каналом для обращений.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner page-shell">
+      <div>
+        <p class="brand commerce-footer__brand">Дзен</p>
+        <nav class="site-footer__nav" aria-label="Нижняя навигация">
+          <a href="index.html">Каталог</a>
+          <a href="about.html">О нас</a>
+          <a href="cart.html">Корзина</a>
+        </nav>
+      </div>
+      <p class="site-footer__meta">Предметы, дисциплина и спокойная форма.<a href="privacy.html" aria-current="page">Конфиденциальность</a></p>
+    </div>
+  </footer>
+
+  <script src="js/cart.js?v=20261004-bottoms" defer></script>
+</body>
+</html>
