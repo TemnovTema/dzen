@@ -218,10 +218,24 @@ function renderCommerceRecommendation(container, options) {
 
 function getLineOptionLabel(product, line) {
   if (!line.size) return "";
-  if (Array.isArray(product.sizes) && product.sizes.length) {
+  const hasSizes = Array.isArray(product.sizes) && product.sizes.length;
+  const hasVariants = Array.isArray(product.variants) && product.variants.length;
+  if (hasSizes && hasVariants) {
+    return `<span>Размер / ${escapeHtmlCart(product.variantLabel || "вариант")}</span><strong>${escapeHtmlCart(line.size)}</strong>`;
+  }
+  if (hasSizes) {
     return `<span>Размер</span><strong>${escapeHtmlCart(line.size)}</strong>`;
   }
   return `<span>Вариант</span><strong>${escapeHtmlCart(line.size)}</strong>`;
+}
+
+function getCartLineImage(product, line) {
+  if (!Array.isArray(product.variants) || !line.size) return product.image;
+  const selectedValue = String(line.size).split(" · ").pop();
+  const variant = product.variants.find(
+    (item) => item.id === selectedValue || item.label === selectedValue
+  );
+  return variant && variant.image ? variant.image : product.image;
 }
 
 function renderCartLine(line) {
@@ -233,11 +247,12 @@ function renderCartLine(line) {
   const sizeKey = line.size == null ? "" : line.size;
   const option = getLineOptionLabel(product, line);
   const productUrl = `product.html?id=${encodeURIComponent(line.id)}`;
+  const lineImage = getCartLineImage(product, line);
 
   return `
     <article class="cart-line" data-id="${escapeHtmlCart(line.id)}" data-size="${escapeHtmlCart(sizeKey)}">
       <a class="cart-line__media" href="${productUrl}">
-        <img src="${escapeHtmlCart(product.image)}" alt="${escapeHtmlCart(product.name)}">
+        <img src="${escapeHtmlCart(lineImage)}" alt="${escapeHtmlCart(product.name)}">
       </a>
       <div class="cart-line__content">
         <div class="cart-line__heading">

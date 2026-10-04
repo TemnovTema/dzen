@@ -116,11 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
-  const galleryImages = hasVariants
-    ? [product.image]
-    : getGalleryImages(product);
-  const needsSize = !hasVariants && product.sizes && product.sizes.length > 0;
+  const galleryImages = hasVariants ? [product.image] : getGalleryImages(product);
+  const needsSize = product.sizes && product.sizes.length > 0;
   const needsVariant = hasVariants;
+  const variantLabel = product.variantLabel || "набор";
 
   const sizeBlock = needsSize
     ? `
@@ -134,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const variantBlock = needsVariant
     ? `
 <div class="product-page__field">
-  <p class="product-page__label">набор</p>
-  <div class="size-picker size-picker--product size-picker--variants" id="variant-picker" role="radiogroup" aria-label="Набор"></div>
+  <p class="product-page__label">${escapeHtml(variantLabel)}</p>
+  <div class="size-picker size-picker--product size-picker--variants" id="variant-picker" role="radiogroup" aria-label="${escapeHtml(variantLabel)}"></div>
   <p class="field-message" id="variant-message" aria-live="polite"></p>
 </div>`
     : "";
@@ -234,17 +233,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const picker = document.getElementById("variant-picker");
     product.variants.forEach((variant, i) => {
       const rid = `variant-${i}`;
+      const swatch = /^#[0-9a-f]{6}$/i.test(variant.swatch || "")
+        ? `<span class="variant-swatch" style="--variant-swatch:${variant.swatch}" aria-hidden="true"></span>`
+        : "";
       picker.insertAdjacentHTML(
         "beforeend",
         `<input type="radio" name="variant" id="${rid}" value="${escapeHtml(variant.id)}">
-        <label for="${rid}">${escapeHtml(variant.label || variant.id)}</label>`
+        <label for="${rid}">${swatch}<span>${escapeHtml(variant.label || variant.id)}</span></label>`
       );
     });
     picker.querySelectorAll('input[name="variant"]').forEach((input) => {
       input.addEventListener("change", () => {
         const variant = product.variants.find((v) => v.id === input.value);
         if (!variant) return;
-        selectedVariant = variant.id;
+        selectedVariant = variant;
         if (imgEl && variant.image) {
           imgEl.src = variant.image;
         }
@@ -276,17 +278,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (needsVariant && !selectedVariant) {
       if (variantMessage) {
-        variantMessage.textContent = "Выберите набор перед добавлением в корзину.";
+        variantMessage.textContent = `Выберите ${variantLabel} перед добавлением в корзину.`;
         variantMessage.classList.add("field-message--error");
       }
       return;
     }
     const qty = Math.max(1, Number(qtyInput.value) || 1);
-    const cartKey = needsVariant
-      ? selectedVariant
-      : needsSize
-      ? selectedSize
-      : null;
+    const selectedOptions = [];
+    if (needsSize) selectedOptions.push(selectedSize);
+    if (needsVariant) {
+      selectedOptions.push(selectedVariant.label || selectedVariant.id);
+    }
+    const cartKey = selectedOptions.length ? selectedOptions.join(" · ") : null;
     addToCart(product.id, cartKey, qty);
     updateCartBadges();
     feedback.textContent = "Товар добавлен в корзину.";

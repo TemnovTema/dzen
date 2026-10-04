@@ -26,7 +26,10 @@ function getCheckoutItems(cart) {
       return {
         id: product.id,
         name: product.name,
-        image: product.image,
+        image:
+          typeof getCartLineImage === "function"
+            ? getCartLineImage(product, line)
+            : product.image,
         price: product.price,
         size: line.size ?? null,
         quantity: Math.max(1, Math.floor(Number(line.quantity) || 1)),

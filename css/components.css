@@ -494,6 +494,18 @@ a.product-card__hover-button {
 .size-picker--variants label {
   min-width: 4.5rem;
   letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.variant-swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 0.75rem;
+  border: var(--border) solid currentColor;
+  background: var(--variant-swatch);
 }
 
 .size-picker input {

@@ -34,9 +34,12 @@ function isTshirt(product) {
 }
 
 function getColorHaystack(product) {
+  const variants = Array.isArray(product.variants)
+    ? product.variants.map((variant) => variant.label || variant.id || "").join(" ")
+    : "";
   return `${product.name || ""} ${product.cardTitle || ""} ${
     product.description || ""
-  }`.toLowerCase();
+  } ${variants}`.toLowerCase();
 }
 
 function productHasColor(product, color) {
@@ -107,6 +110,14 @@ const CATALOG_SECTIONS = [
     match: (p) => {
       const t = String(p.cardTitle || p.name || "").toLowerCase();
       return t.startsWith("свитшот") || t.startsWith("свитер");
+    },
+  },
+  {
+    id: "bottoms",
+    title: "Низ",
+    match: (p) => {
+      const t = String(p.cardTitle || p.name || "").toLowerCase();
+      return t.startsWith("карго") || t.startsWith("шорты");
     },
   },
   {
