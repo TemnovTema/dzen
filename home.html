@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/base.css?v=20260721-dela">
   <link rel="stylesheet" href="css/layout.css?v=20260720-borderless">
   <link rel="stylesheet" href="css/components.css?v=20260721-icons">
-  <link rel="stylesheet" href="css/pages.css?v=20260721-icons">
+  <link rel="stylesheet" href="css/pages.css?v=20261004-campaign">
 </head>
 <body class="page-homepage">
   <a class="skip-link" href="#main-content">К содержанию</a>
@@ -29,16 +29,31 @@
   <main id="main-content" class="home-page">
     <section class="home-hero page-shell" aria-labelledby="home-title">
       <div class="home-hero__stage" data-animation-stage>
-        <!-- Future video or canvas animation can replace the poster inside this stage. -->
-        <img
-          class="home-hero__poster"
-          src="assets/images/home-hero-campaign.jpg"
-          width="1672"
-          height="941"
-          alt="Модель Дзен в чёрной одежде с синими деталями идёт вдоль бетонной стены"
-          fetchpriority="high"
-        >
+        <div class="home-hero__slides" data-hero-slides>
+          <img
+            class="home-hero__poster is-active"
+            src="assets/images/home-hero-campaign.jpg"
+            width="1672"
+            height="941"
+            alt="Модель Дзен в чёрной одежде с синими деталями идёт вдоль бетонной стены"
+            fetchpriority="high"
+            data-hero-slide
+          >
+          <img
+            class="home-hero__poster home-hero__poster--woman"
+            src="assets/images/home-hero-woman.jpg"
+            width="1672"
+            height="941"
+            alt="Девушка в чёрной одежде Дзен идёт между монументальными бетонными стенами"
+            decoding="async"
+            data-hero-slide
+          >
+        </div>
         <div class="home-hero__shade" aria-hidden="true"></div>
+        <div class="home-hero__controls" aria-label="Кадры кампании">
+          <button type="button" class="is-active" aria-label="Показать первый кадр" aria-pressed="true" data-hero-control="0">01</button>
+          <button type="button" aria-label="Показать второй кадр" aria-pressed="false" data-hero-control="1">02</button>
+        </div>
         <div class="home-hero__copy">
           <p class="home-hero__label">Новая коллекция</p>
           <h1 id="home-title"><span>Город шумит.</span><span>Форма остаётся.</span></h1>
@@ -132,7 +147,7 @@
 
     <section class="home-story page-shell" aria-labelledby="story-title">
       <figure class="home-story__media">
-        <img src="assets/images/hero-dzen.png" width="1024" height="683" alt="Модель Дзен в прыжке на фоне пасмурного неба" loading="lazy">
+        <img src="assets/images/home-story-woman.jpg" width="1536" height="1024" alt="Девушка в одежде Дзен идёт по мокрому проходу между бетонными блоками" loading="lazy">
       </figure>
       <div class="home-story__copy">
         <h2 id="story-title">За пределами вещи.</h2>
@@ -185,5 +200,6 @@
   </footer>
 
   <script src="js/cart.js?v=20260721-icons" defer></script>
+  <script src="js/home.js?v=20261004-campaign" defer></script>
 </body>
 </html>
